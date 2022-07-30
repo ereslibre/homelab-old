@@ -9,6 +9,8 @@
   ];
 
   nix.extraOptions = ''
+    # FIXME: of course not...
+    require-sigs = false
     experimental-features = nix-command flakes
   '';
 
