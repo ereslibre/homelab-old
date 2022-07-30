@@ -19,8 +19,6 @@
   # Enables the generation of /boot/extlinux/extlinux.conf
   boot.loader.generic-extlinux-compatible.enable = true;
 
-  security.sudo.wheelNeedsPassword = false;
-
   time.timeZone = "Europe/Madrid";
 
   networking = {

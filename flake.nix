@@ -17,7 +17,7 @@
       hostname = "cpi5.lab.ereslibre.local";
       profiles = {
         system = {
-          user = "root";
+          sshUser = "root";
           path = deploy-rs.lib.aarch64-linux.activate.nixos self.nixosConfigurations."cpi5.lab.ereslibre.local";
         };
       };
