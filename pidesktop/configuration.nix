@@ -14,6 +14,10 @@
       "${fetchTarball "https://github.com/NixOS/nixos-hardware/archive/936e4649098d6a5e0762058cb7687be1b2d90550.tar.gz"}/raspberry-pi/4"
     ];
 
+  nix.extraOptions = ''
+    experimental-features = nix-command flakes
+  '';
+
   # Use the extlinux boot loader. (NixOS wants to enable GRUB by default)
   boot.loader.grub.enable = false;
   # Enables the generation of /boot/extlinux/extlinux.conf
