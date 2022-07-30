@@ -6,7 +6,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/release-22.05";
     nixpkgs-rpi.url = "github:nixos/nixpkgs/c71f061c68ba8ce53471b767d5049cbd0f3d8490";
     dotfiles = {
-      url = "github:ereslibre/dotfiles/wip";
+      url = "github:ereslibre/dotfiles";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -27,6 +27,7 @@
         };
         ereslibre = {
           user = "ereslibre";
+          sshUser = "root";
           path = deploy-rs.lib.aarch64-linux.activate.home-manager dotfiles.homeConfigurations."ereslibre@cpi5.lab.ereslibre.local";
         };
       };
