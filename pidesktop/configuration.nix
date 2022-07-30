@@ -1,18 +1,12 @@
-# Build with nixpkgs checked locally at c71f061c68ba8ce53471b767d5049cbd0f3d8490
-# Run with `sudo nixos-rebuild -I nixpkgs=/home/ereslibre/nixpkgs switch`
-
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
+# Run `sudo nixos-rebuild -I nixpkgs=https://github.com/nixos/nixpkgs/archive/c71f061c68ba8ce53471b767d5049cbd0f3d8490.tar.gz switch`
 
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      "${fetchTarball "https://github.com/NixOS/nixos-hardware/archive/936e4649098d6a5e0762058cb7687be1b2d90550.tar.gz"}/raspberry-pi/4"
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    "${fetchTarball "https://github.com/NixOS/nixos-hardware/archive/936e4649098d6a5e0762058cb7687be1b2d90550.tar.gz"}/raspberry-pi/4"
+  ];
 
   nix.extraOptions = ''
     experimental-features = nix-command flakes
@@ -23,30 +17,21 @@
   # Enables the generation of /boot/extlinux/extlinux.conf
   boot.loader.generic-extlinux-compatible.enable = true;
 
-  # networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Set your time zone.
   time.timeZone = "Europe/Madrid";
 
-  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-  # Per-interface useDHCP will be mandatory in the future, so this generated config
-  # replicates the default behaviour.
-  networking.useDHCP = false;
-  networking.networkmanager.enable = true;
-  networking.interfaces.eth0.useDHCP = true;
-  networking.interfaces.wlan0.useDHCP = true;
+  networking = {
+    hostName = "pidesktop";
+    useDHCP = false;
+    networkmanager.enable = true;
+    interfaces.eth0.useDHCP = true;
+    interfaces.wlan0.useDHCP = true;
+};
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  # };
+  i18n.defaultLocale = "en_US.UTF-8";
+  console = {
+    font = "Lat2-Terminus16";
+    keyMap = "us";
+  };
 
   # Enable the X11 windowing system.
   services.xserver = {
@@ -107,17 +92,7 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
-  networking = {
-    hostName = "pidesktop";
-  };
-
   hardware.raspberry-pi."4".fkms-3d.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
