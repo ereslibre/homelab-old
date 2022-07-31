@@ -3,7 +3,10 @@
 
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
-    deploy-rs.url = "github:serokell/deploy-rs";
+    deploy-rs = {
+      url = "github:serokell/deploy-rs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixpkgs.url = "github:nixos/nixpkgs/release-22.05";
     # nixpkgs revision known to work with Raspberry Pi 4b/400
     nixpkgs-rpi.url =
