@@ -18,7 +18,8 @@
   };
 
   outputs = { self, flake-utils, nixpkgs, nixpkgs-rpi, deploy-rs, dotfiles }:
-    flake-utils.lib.eachDefaultSystem (system:
+    flake-utils.lib.eachSystem
+    (flake-utils.lib.defaultSystems ++ [ "aarch64-darwin" ]) (system:
       let pkgs = nixpkgs.legacyPackages.${system};
       in {
         devShell = pkgs.mkShell {
