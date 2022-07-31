@@ -22,9 +22,10 @@
     (flake-utils.lib.defaultSystems ++ [ "aarch64-darwin" ]) (system:
       let pkgs = nixpkgs.legacyPackages.${system};
       in {
-        devShell = pkgs.mkShell {
+        devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [ cachix nix-linter nixfmt ];
         };
+        apps.default = deploy-rs.apps."${system}".default;
       }) // {
         # Make Home Manager configurations available from here for
         # applying locally as well if desired.

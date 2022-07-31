@@ -1,6 +1,6 @@
 .PHONY: deploy
 deploy:
-	nix run github:serokell/deploy-rs
+	nix run .
 
 .PHONY: switch
 switch:
