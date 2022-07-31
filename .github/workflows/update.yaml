@@ -1,0 +1,33 @@
+name: update-flake-lock
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 6 * * *'
+
+jobs:
+  update-flake-lock:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Install Nix
+        uses: cachix/install-nix-action@v17
+        with:
+          extra_nix_config: |
+            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+      - name: Update flake.lock
+        id: update-flake-lock
+        uses: DeterminateSystems/update-flake-lock@v10
+        with:
+          branch: update-flake-lock
+          pr-title: "Update flake.lock"
+          # By using a PAT, GitHub workflows will run on the opened
+          # PR. Otherwise, GitHub workflows won't run without human
+          # intervention on PR's opened by a GitHub action.
+          token: ${{ secrets.UPDATE_FLAKE_LOCK }}
+      - name: Enable pull request automerge
+        uses: peter-evans/enable-pull-request-automerge@v2
+        if: ${{ steps.update-flake-lock.outputs.pull-request-number }}
+        with:
+          token: ${{ secrets.UPDATE_FLAKE_LOCK }}
+          pull-request-number: ${{ steps.update-flake-lock.outputs.pull-request-number }}
