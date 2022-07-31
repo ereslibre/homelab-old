@@ -1,6 +1,7 @@
 # Run `sudo nixos-rebuild -I nixpkgs=https://github.com/nixos/nixpkgs/archive/c71f061c68ba8ce53471b767d5049cbd0f3d8490.tar.gz switch`
 
-{ config, pkgs, ... }:
+# { config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [ ./hardware-configuration.nix ];
@@ -34,18 +35,15 @@
     mutableUsers = false;
     users.ereslibre = {
       isNormalUser = true;
-      initialHashedPassword = "$6$M8PJiTY.2YaoUNLr$61IUEobA75b.vMbPLPxVkU4d6Rs5CuYB2KlQHX4B2Gr09Zx70Q99w3c1DyJoyt0AvXbNYS6Q7cNKdA35c3ZMU/";
+      initialHashedPassword =
+        "$6$M8PJiTY.2YaoUNLr$61IUEobA75b.vMbPLPxVkU4d6Rs5CuYB2KlQHX4B2Gr09Zx70Q99w3c1DyJoyt0AvXbNYS6Q7cNKdA35c3ZMU/";
       extraGroups = [ "wheel" ];
       openssh.authorizedKeys.keys = sshKeys.ereslibre;
     };
-    users.root = {
-      openssh.authorizedKeys.keys = sshKeys.ereslibre;
-    };
+    users.root = { openssh.authorizedKeys.keys = sshKeys.ereslibre; };
   };
 
-  environment.systemPackages = with pkgs; [
-    htop
-  ];
+  environment.systemPackages = with pkgs; [ htop ];
 
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
