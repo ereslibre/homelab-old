@@ -2,25 +2,22 @@
 { pkgs, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ];
+  imports =
+    [
+      ./hardware-configuration.nix
+    ];
 
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';
 
-  # Use the extlinux boot loader. (NixOS wants to enable GRUB by default)
-  boot.loader.grub.enable = false;
-  # Enables the generation of /boot/extlinux/extlinux.conf
-  boot.loader.generic-extlinux-compatible.enable = true;
+  # Use the systemd-boot EFI boot loader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   time.timeZone = "Europe/Madrid";
 
-  networking = {
-    hostName = "cpi-5";
-    useDHCP = false;
-    interfaces.eth0.useDHCP = true;
-    interfaces.wlan0.useDHCP = true;
-  };
+  networking.hostName = "nuc-1";
 
   users = let
     sshKeys = {

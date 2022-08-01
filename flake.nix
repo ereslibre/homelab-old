@@ -31,11 +31,16 @@
         # applying locally as well if desired.
         inherit (dotfiles) homeConfigurations;
 
-        nixosConfigurations."cpi-5.lab.ereslibre.local" =
-          nixpkgs-rpi.lib.nixosSystem {
-            system = "aarch64-linux";
-            modules = [ ./cpi-5/configuration.nix ];
+        nixosConfigurations = {
+          "cpi-5.lab.ereslibre.local" = nixpkgs-rpi.lib.nixosSystem {
+              system = "aarch64-linux";
+              modules = [ ./cpi-5/configuration.nix ];
           };
+          "nuc-1.lab.ereslibre.local" = nixpkgs.lib.nixosSystem {
+            system = "aarch64-linux";
+            modules = [ ./nuc-1/configuration.nix ];
+          };
+        };
 
         deploy.nodes."cpi-5.lab.ereslibre.local" = {
           profilesOrder = [ "system" "ereslibre" ];
@@ -51,6 +56,24 @@
               sshUser = "root";
               path = deploy-rs.lib.aarch64-linux.activate.home-manager
                 dotfiles.homeConfigurations."ereslibre@cpi-5.lab.ereslibre.local";
+            };
+          };
+        };
+
+        deploy.nodes."nuc-1.lab.ereslibre.local" = {
+          profilesOrder = [ "system" "ereslibre" ];
+          hostname = "nuc-1.lab.ereslibre.local";
+          profiles = {
+            system = {
+              sshUser = "root";
+              path = deploy-rs.lib.x86_64-linux.activate.nixos
+                self.nixosConfigurations."nuc-1.lab.ereslibre.local";
+            };
+            ereslibre = {
+              user = "ereslibre";
+              sshUser = "root";
+              path = deploy-rs.lib.x86_64-linux.activate.home-manager
+                dotfiles.homeConfigurations."ereslibre@nuc-1.lab.ereslibre.local";
             };
           };
         };
