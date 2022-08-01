@@ -20,12 +20,15 @@
   outputs = { self, flake-utils, nixpkgs, nixpkgs-rpi, deploy-rs, dotfiles }:
     flake-utils.lib.eachSystem
     (flake-utils.lib.defaultSystems ++ [ "aarch64-darwin" ]) (system:
-      let pkgs = nixpkgs.legacyPackages.${system};
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+        defaultApp = deploy-rs.apps.${system}.default;
       in {
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [ cachix nix-linter nixfmt ];
         };
-        apps.default = deploy-rs.apps."${system}".default;
+        inherit defaultApp;
+        apps.default = defaultApp;
       }) // {
         # Make Home Manager configurations available from here for
         # applying locally as well if desired.
