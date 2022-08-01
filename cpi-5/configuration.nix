@@ -18,7 +18,7 @@
   time.timeZone = "Europe/Madrid";
 
   networking = {
-    hostName = "cpi5";
+    hostName = "cpi-5";
     useDHCP = false;
     interfaces.eth0.useDHCP = true;
     interfaces.wlan0.useDHCP = true;

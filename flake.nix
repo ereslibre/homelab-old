@@ -31,26 +31,26 @@
         # applying locally as well if desired.
         inherit (dotfiles) homeConfigurations;
 
-        nixosConfigurations."cpi5.lab.ereslibre.local" =
+        nixosConfigurations."cpi-5.lab.ereslibre.local" =
           nixpkgs-rpi.lib.nixosSystem {
             system = "aarch64-linux";
-            modules = [ ./cpi5/configuration.nix ];
+            modules = [ ./cpi-5/configuration.nix ];
           };
 
-        deploy.nodes."cpi5.lab.ereslibre.local" = {
+        deploy.nodes."cpi-5.lab.ereslibre.local" = {
           profilesOrder = [ "system" "ereslibre" ];
-          hostname = "cpi5.lab.ereslibre.local";
+          hostname = "cpi-5.lab.ereslibre.local";
           profiles = {
             system = {
               sshUser = "root";
               path = deploy-rs.lib.aarch64-linux.activate.nixos
-                self.nixosConfigurations."cpi5.lab.ereslibre.local";
+                self.nixosConfigurations."cpi-5.lab.ereslibre.local";
             };
             ereslibre = {
               user = "ereslibre";
               sshUser = "root";
               path = deploy-rs.lib.aarch64-linux.activate.home-manager
-                dotfiles.homeConfigurations."ereslibre@cpi5.lab.ereslibre.local";
+                dotfiles.homeConfigurations."ereslibre@cpi-5.lab.ereslibre.local";
             };
           };
         };
