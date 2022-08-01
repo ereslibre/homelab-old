@@ -37,7 +37,7 @@
             modules = [ ./cpi-5/configuration.nix ];
           };
           "nuc-1.lab.ereslibre.local" = nixpkgs.lib.nixosSystem {
-            system = "aarch64-linux";
+            system = "x86_64-linux";
             modules = [ ./nuc-1/configuration.nix ];
           };
         };
