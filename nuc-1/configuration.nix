@@ -2,10 +2,7 @@
 { pkgs, ... }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-    ];
+  imports = [ ./hardware-configuration.nix ];
 
   nix.extraOptions = ''
     experimental-features = nix-command flakes

@@ -33,8 +33,8 @@
 
         nixosConfigurations = {
           "cpi-5.lab.ereslibre.local" = nixpkgs-rpi.lib.nixosSystem {
-              system = "aarch64-linux";
-              modules = [ ./cpi-5/configuration.nix ];
+            system = "aarch64-linux";
+            modules = [ ./cpi-5/configuration.nix ];
           };
           "nuc-1.lab.ereslibre.local" = nixpkgs.lib.nixosSystem {
             system = "aarch64-linux";
