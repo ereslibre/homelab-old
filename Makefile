@@ -4,7 +4,7 @@ deploy:
 
 .PHONY: switch
 switch:
-	nix run '.#homeConfigurations."${USER}@$(shell hostname -s)".activationPackage'
+	nix run '.#homeConfigurations."${USER}@$(shell hostname -s)".hm-config.activationPackage'
 
 .PHONY: fmt
 fmt:

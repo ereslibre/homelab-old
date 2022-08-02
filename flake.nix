@@ -3,10 +3,6 @@
 
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
-    deploy-rs = {
-      url = "github:serokell/deploy-rs";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nixpkgs.url = "github:nixos/nixpkgs/release-22.05";
     # nixpkgs revision known to work with Raspberry Pi 4b/400
     nixpkgs-rpi.url =
@@ -17,18 +13,14 @@
     };
   };
 
-  outputs = { self, flake-utils, nixpkgs, nixpkgs-rpi, deploy-rs, dotfiles }:
+  outputs = { flake-utils, nixpkgs, nixpkgs-rpi, dotfiles, ... }:
     flake-utils.lib.eachSystem
     (flake-utils.lib.defaultSystems ++ [ "aarch64-darwin" ]) (system:
-      let
-        pkgs = nixpkgs.legacyPackages.${system};
-        defaultApp = deploy-rs.apps.${system}.default;
+      let pkgs = nixpkgs.legacyPackages.${system};
       in {
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [ cachix nix-linter nixfmt ];
         };
-        inherit defaultApp;
-        apps.default = defaultApp;
       }) // {
         # Make Home Manager configurations available from here for
         # applying locally as well if desired.
@@ -41,44 +33,19 @@
           };
           "nuc-1.lab.ereslibre.local" = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
-            modules = [ ./nuc-1/configuration.nix ];
-          };
-        };
-
-        deploy.nodes."cpi-5.lab.ereslibre.local" = {
-          profilesOrder = [ "system" "ereslibre" ];
-          hostname = "cpi-5.lab.ereslibre.local";
-          profiles = {
-            system = {
-              sshUser = "root";
-              path = deploy-rs.lib.aarch64-linux.activate.nixos
-                self.nixosConfigurations."cpi-5.lab.ereslibre.local";
-            };
-            ereslibre = {
-              user = "ereslibre";
-              sshUser = "root";
-              path = deploy-rs.lib.aarch64-linux.activate.home-manager
-                dotfiles.homeConfigurations."ereslibre@cpi-5.lab.ereslibre.local";
-            };
-          };
-        };
-
-        deploy.nodes."nuc-1.lab.ereslibre.local" = {
-          profilesOrder = [ "system" "ereslibre" ];
-          hostname = "nuc-1.lab.ereslibre.local";
-          profiles = {
-            system = {
-              sshUser = "root";
-              path = deploy-rs.lib.x86_64-linux.activate.nixos
-                self.nixosConfigurations."nuc-1.lab.ereslibre.local";
-            };
-            ereslibre = {
-              user = "ereslibre";
-              sshUser = "root";
-              path = deploy-rs.lib.x86_64-linux.activate.home-manager
-                dotfiles.homeConfigurations."ereslibre@nuc-1.lab.ereslibre.local";
-            };
+            modules = [
+              ./nuc-1/configuration.nix
+              dotfiles.home-manager.nixosModules.home-manager
+              {
+                home-manager.users.ereslibre =
+                  (import "${dotfiles}/hm-configurations.nix" {
+                    inherit (dotfiles) home-manager;
+                    inherit nixpkgs;
+                  })."ereslibre@nuc-1.lab.ereslibre.local".configuration;
+              }
+            ];
           };
         };
       };
+
 }
