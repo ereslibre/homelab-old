@@ -1,9 +1,9 @@
-.PHONY: deploy
-deploy:
-	nix run .
-
 .PHONY: switch
 switch:
+	sudo nixos-rebuild --flake '.#$(shell hostname -s).lab.ereslibre.local' switch
+
+.PHONY: switch-hm
+switch-hm:
 	nix run '.#homeConfigurations."${USER}@$(shell hostname -s)".hm-config.activationPackage'
 
 .PHONY: fmt
