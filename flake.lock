@@ -9,11 +9,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1659806515,
-        "narHash": "sha256-P/IbLe6EItGQWFEJCFWH4R3voWvKSA9pNNdMoFBXAx8=",
+        "lastModified": 1659806738,
+        "narHash": "sha256-CEXYZUTAyuuDcuyQXa1/9kxK0wpjLUgsQSts+4eDTGA=",
         "owner": "ereslibre",
         "repo": "dotfiles",
-        "rev": "c84dfb86be241f4500d18b61b42e74380ec3a99e",
+        "rev": "71e6cdb82658b4359c21209bfdf027af6ee05ccb",
         "type": "github"
       },
       "original": {
