@@ -29,8 +29,9 @@
         nixosConfigurations = {
           "cpi-5.lab.ereslibre.local" = nixpkgs-rpi.lib.nixosSystem {
             system = "aarch64-linux";
-            modules = [ ./cpi-5/configuration.nix ];
-            dotfiles.home-manager.nixosModules.home-manager
+            modules = [
+              ./cpi-5/configuration.nix
+              dotfiles.home-manager.nixosModules.home-manager
               {
                 home-manager.users.ereslibre =
                   ((import "${dotfiles}/hm-configurations.nix" {
@@ -39,6 +40,7 @@
                     stateVersion = "22.05";
                   })."ereslibre@cpi-5.lab.ereslibre.local".configuration);
               }
+            ];
           };
           "nuc-1.lab.ereslibre.local" = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
