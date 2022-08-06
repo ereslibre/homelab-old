@@ -24,6 +24,7 @@
     };
   in {
     mutableUsers = false;
+    defaultUserShell = pkgs.zsh;
     users.ereslibre = {
       isNormalUser = true;
       initialHashedPassword =
