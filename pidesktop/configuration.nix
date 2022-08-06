@@ -1,6 +1,3 @@
-# Run `sudo nixos-rebuild -I nixpkgs=https://github.com/nixos/nixpkgs/archive/c71f061c68ba8ce53471b767d5049cbd0f3d8490.tar.gz switch`
-
-# { config, pkgs, ... }:
 { pkgs, ... }:
 
 {
