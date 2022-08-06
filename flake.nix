@@ -38,10 +38,11 @@
               dotfiles.home-manager.nixosModules.home-manager
               {
                 home-manager.users.ereslibre =
-                  (import "${dotfiles}/hm-configurations.nix" {
+                  ((import "${dotfiles}/hm-configurations.nix" {
                     inherit (dotfiles) home-manager;
                     inherit nixpkgs;
-                  })."ereslibre@nuc-1.lab.ereslibre.local".configuration;
+                    stateVersion = "22.05";
+                  })."ereslibre@nuc-1.lab.ereslibre.local".configuration);
               }
             ];
           };
