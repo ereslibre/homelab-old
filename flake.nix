@@ -36,7 +36,7 @@
                 home-manager.users.ereslibre =
                   ((import "${dotfiles}/hm-configurations.nix" {
                     inherit (dotfiles) home-manager;
-                    inherit nixpkgs;
+                    nixpkgs = nixpkgs-rpi;
                     stateVersion = "22.05";
                   })."ereslibre@cpi-5.lab.ereslibre.local".configuration);
               }
