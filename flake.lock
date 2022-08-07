@@ -4,16 +4,16 @@
       "inputs": {
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
+        "home-manager-rpi": "home-manager-rpi",
+        "nixpkgs": "nixpkgs",
+        "nixpkgs-rpi": "nixpkgs-rpi"
       },
       "locked": {
-        "lastModified": 1659848868,
-        "narHash": "sha256-m9KG+WIEl+gTOIdIEdhI2egKypvE1F6DsP25xpE5s4I=",
+        "lastModified": 1659861941,
+        "narHash": "sha256-rZxJx6Izw8a/jUpwpSUdPxgxml2Y7dThuEJNIzRSbZQ=",
         "owner": "ereslibre",
         "repo": "dotfiles",
-        "rev": "1d59155d76cfd46f6a6065836bcb855d709984ae",
+        "rev": "434dbc7993a1ca7fd55b6f3f5c24102b2ea25bae",
         "type": "github"
       },
       "original": {
@@ -74,13 +74,35 @@
         "type": "github"
       }
     },
+    "home-manager-rpi": {
+      "inputs": {
+        "nixpkgs": [
+          "dotfiles",
+          "nixpkgs-rpi"
+        ]
+      },
+      "locked": {
+        "lastModified": 1656169755,
+        "narHash": "sha256-Nlnm4jeQWEGjYrE6hxi/7HYHjBSZ/E0RtjCYifnNsWk=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "4a3d01fb53f52ac83194081272795aa4612c2381",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "ref": "release-22.05",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1659836492,
-        "narHash": "sha256-dnB2aFZNIqbqI1bfAsuZ+UFOI73reSvEp9u78O5r4GA=",
+        "lastModified": 1659859897,
+        "narHash": "sha256-jAppjCqvzi5O1ODp8K8p4Kql1YgtnAnO3iAsbW3622U=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "0228346f7b58f1a284fdb1b72df6298b06677495",
+        "rev": "3c8a5fa9a699d6910bbe70490918f1a4adc1e462",
         "type": "github"
       },
       "original": {
@@ -109,9 +131,7 @@
     "root": {
       "inputs": {
         "dotfiles": "dotfiles",
-        "flake-utils": "flake-utils_2",
-        "nixpkgs": "nixpkgs",
-        "nixpkgs-rpi": "nixpkgs-rpi"
+        "flake-utils": "flake-utils_2"
       }
     }
   },
