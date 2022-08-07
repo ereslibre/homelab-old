@@ -7,10 +7,13 @@
     experimental-features = nix-command flakes
   '';
 
-  # Use the extlinux boot loader. (NixOS wants to enable GRUB by default)
-  boot.loader.grub.enable = false;
-  # Enables the generation of /boot/extlinux/extlinux.conf
-  boot.loader.generic-extlinux-compatible.enable = true;
+  boot = {
+    loader = {
+      grub.enable = false;
+      generic-extlinux-compatible.enable = true;
+    };
+    kernel.sysctl."net.ipv4.ip_forward" = 1;
+  };
 
   time.timeZone = "Europe/Madrid";
 

@@ -7,9 +7,13 @@
     experimental-features = nix-command flakes
   '';
 
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot = {
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
+    kernel.sysctl."net.ipv4.ip_forward" = 1;
+  };
 
   time.timeZone = "Europe/Madrid";
 
