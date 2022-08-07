@@ -73,7 +73,7 @@
       fi
 
       # otherwise authenticate -- authkey in public, no good, but hey, one use and testing
-      ${tailscale}/bin/tailscale up --advertise-routes=10.0.0.0/24,10.0.1.0/24,10.0.2.0/24,10.0.3.0/24,10.0.4.0/24 -authkey tskey-kEgCWX4CNTRL-R7q18KKK9r6Mfdq3Ci5vJ
+      ${tailscale}/bin/tailscale up -authkey tskey-kEgCWX4CNTRL-R7q18KKK9r6Mfdq3Ci5vJ
     '';
   };
 
