@@ -24,8 +24,6 @@
     hostName = "pidesktop";
     useDHCP = false;
     networkmanager.enable = true;
-    interfaces.eth0.useDHCP = true;
-    interfaces.wlan0.useDHCP = true;
   };
 
   i18n.defaultLocale = "en_US.UTF-8";
