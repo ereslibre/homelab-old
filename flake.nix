@@ -30,7 +30,6 @@
                   ((import "${dotfiles}/hm-configurations.nix" {
                     home-manager = dotfiles.home-manager-rpi;
                     nixpkgs = dotfiles.nixpkgs-rpi;
-                    stateVersion = "22.05";
                   })."ereslibre@cpi-5.lab.ereslibre.local".configuration);
               }
             ];
@@ -44,7 +43,6 @@
                 home-manager.users.ereslibre =
                   ((import "${dotfiles}/hm-configurations.nix" {
                     inherit (dotfiles) home-manager nixpkgs;
-                    stateVersion = "22.05";
                   })."ereslibre@nuc-1.lab.ereslibre.local".configuration);
               }
             ];
