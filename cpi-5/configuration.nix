@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [ ./hardware-configuration.nix ];
@@ -19,9 +19,12 @@
 
   networking = {
     hostName = "cpi-5";
-    useDHCP = false;
-    interfaces.eth0.useDHCP = true;
-    interfaces.wlan0.useDHCP = true;
+    firewall = {
+      enable = true;
+      trustedInterfaces = [ "tailscale0" ];
+      allowedUDPPorts = [ config.services.tailscale.port ];
+      allowedTCPPorts = [ 22 ];
+    };
   };
 
   users = let
@@ -51,7 +54,34 @@
     keyMap = "us";
   };
 
-  services.openssh.enable = true;
+  services = {
+    openssh.enable = true;
+    tailscale.enable = true;
+  };
+
+  systemd.services.tailscale-autoconnect = {
+    description = "Automatic connection to Tailscale";
+
+    after = [ "network-pre.target" "tailscale.service" ];
+    wants = [ "network-pre.target" "tailscale.service" ];
+    wantedBy = [ "multi-user.target" ];
+
+    serviceConfig.type = "oneshot";
+
+    script = with pkgs; ''
+      # FIXME (wait on an event): wait for tailscaled to settle
+      sleep 2
+
+      # check if already authenticated
+      status="$(${tailscale}/bin/tailscale status -json | ${jq}/bin/jq -r .BackendState)"
+      if [ $status = "Running" ]; then # if so, then do nothing
+        exit 0
+      fi
+
+      # otherwise authenticate -- authkey in public, no good, but hey, one use and testing
+      ${tailscale}/bin/tailscale up -authkey tskey-kqTync1CNTRL-uGLjdtRqmsNP5WVELpYvZX
+    '';
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
