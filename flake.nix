@@ -34,20 +34,21 @@
               }
             ];
           };
-          "pidesktop.lab.ereslibre.local" = dotfiles.nixpkgs-rpi.lib.nixosSystem {
-            system = "aarch64-linux";
-            modules = [
-              ./pidesktop/configuration.nix
-              dotfiles.home-manager-rpi.nixosModules.home-manager
-              {
-                home-manager.users.ereslibre =
-                  ((import "${dotfiles}/hm-configurations.nix" {
-                    home-manager = dotfiles.home-manager-rpi;
-                    nixpkgs = dotfiles.nixpkgs-rpi;
-                  })."ereslibre@pidesktop.lab.ereslibre.local".configuration);
-              }
-            ];
-          };
+          "pidesktop.lab.ereslibre.local" =
+            dotfiles.nixpkgs-rpi.lib.nixosSystem {
+              system = "aarch64-linux";
+              modules = [
+                ./pidesktop/configuration.nix
+                dotfiles.home-manager-rpi.nixosModules.home-manager
+                {
+                  home-manager.users.ereslibre =
+                    ((import "${dotfiles}/hm-configurations.nix" {
+                      home-manager = dotfiles.home-manager-rpi;
+                      nixpkgs = dotfiles.nixpkgs-rpi;
+                    })."ereslibre@pidesktop.lab.ereslibre.local".configuration);
+                }
+              ];
+            };
           "nuc-1.lab.ereslibre.local" = dotfiles.nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
             modules = [

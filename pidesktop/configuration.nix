@@ -4,10 +4,10 @@
   imports = [
     ./hardware-configuration.nix
     "${
-      fetchTarball
-      {
-        url = "https://github.com/NixOS/nixos-hardware/archive/936e4649098d6a5e0762058cb7687be1b2d90550.tar.gz";
-        sha256 = "sha256:06g0061xm48i5w7gz5sm5x5ps6cnipqv1m483f8i9mmhlz77hvlw";
+      fetchTarball {
+        url =
+          "https://github.com/NixOS/nixos-hardware/archive/12620020f76b1b5d2b0e6fbbda831ed4f5fe56e1.tar.gz";
+        sha256 = "sha256:061bvqikx69rz6kz4ya8ksnk226gfdjvzy6j2lbi0vj398xmd2fk";
       }
     }/raspberry-pi/4"
   ];
