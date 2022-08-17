@@ -61,6 +61,7 @@
       initialHashedPassword =
         "$6$M8PJiTY.2YaoUNLr$61IUEobA75b.vMbPLPxVkU4d6Rs5CuYB2KlQHX4B2Gr09Zx70Q99w3c1DyJoyt0AvXbNYS6Q7cNKdA35c3ZMU/";
       extraGroups = [ "wheel" ];
+      uid = 1000;
       openssh.authorizedKeys.keys = sshKeys.ereslibre;
     };
     users.root = { openssh.authorizedKeys.keys = sshKeys.ereslibre; };
