@@ -1,16 +1,7 @@
 { pkgs, ... }:
 
 {
-  imports = [
-    ./hardware-configuration.nix
-    "${
-      fetchTarball {
-        url =
-          "https://github.com/NixOS/nixos-hardware/archive/12620020f76b1b5d2b0e6fbbda831ed4f5fe56e1.tar.gz";
-        sha256 = "sha256:061bvqikx69rz6kz4ya8ksnk226gfdjvzy6j2lbi0vj398xmd2fk";
-      }
-    }/raspberry-pi/4"
-  ];
+  imports = [ ./hardware-configuration.nix ];
 
   nix.extraOptions = ''
     experimental-features = nix-command flakes

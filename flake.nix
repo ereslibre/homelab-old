@@ -4,9 +4,10 @@
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
     dotfiles.url = "github:ereslibre/dotfiles";
+    nixos-hardware.url = "github:nixos/nixos-hardware";
   };
 
-  outputs = { flake-utils, dotfiles, ... }:
+  outputs = { flake-utils, dotfiles, nixos-hardware, ... }:
     flake-utils.lib.eachSystem
     (flake-utils.lib.defaultSystems ++ [ "aarch64-darwin" ]) (system:
       let pkgs = dotfiles.nixpkgs.legacyPackages.${system};
@@ -39,6 +40,7 @@
               system = "aarch64-linux";
               modules = [
                 ./pidesktop/configuration.nix
+                nixos-hardware.nixosModules.raspberry-pi-4
                 dotfiles.home-manager-rpi.nixosModules.home-manager
                 {
                   home-manager.users.ereslibre =
