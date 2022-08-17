@@ -79,7 +79,14 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  services = {
+    openssh = {
+      enable = true;
+      extraConfig = ''
+        StreamLocalBindUnlink yes
+      '';
+    };
+  };
 
   hardware.raspberry-pi."4".fkms-3d.enable = true;
 

@@ -55,7 +55,12 @@
   };
 
   services = {
-    openssh.enable = true;
+    openssh = {
+      enable = true;
+      extraConfig = ''
+        StreamLocalBindUnlink yes
+      '';
+    };
     tailscale.enable = true;
   };
 
