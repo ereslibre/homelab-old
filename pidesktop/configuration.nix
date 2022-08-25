@@ -12,6 +12,11 @@
   # Enables the generation of /boot/extlinux/extlinux.conf
   boot.loader.generic-extlinux-compatible.enable = true;
 
+  environment.systemPackages = with pkgs; [
+    man-pages
+    man-pages-posix
+  ];
+
   time.timeZone = "Europe/Madrid";
 
   networking = {

@@ -15,6 +15,11 @@
     kernel.sysctl."net.ipv4.ip_forward" = 1;
   };
 
+  environment.systemPackages = with pkgs; [
+    man-pages
+    man-pages-posix
+  ];
+
   time.timeZone = "Europe/Madrid";
 
   networking = {
