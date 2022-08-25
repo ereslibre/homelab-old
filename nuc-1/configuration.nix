@@ -20,6 +20,8 @@
     man-pages-posix
   ];
 
+  documentation.dev.enable = true;
+
   time.timeZone = "Europe/Madrid";
 
   networking = {
