@@ -2,14 +2,17 @@
 
 {
   environment = {
-    etc."containers/policy.json" = {
-      text = ''
-        {
-          "default": [{"type": "insecureAcceptAnything"}]
-        }
-      '';
-      mode = "0444";
-    };
-    systemPackages = with pkgs; [ conmon podman ];
+    systemPackages = with pkgs;
+      [
+        # conmon is used by podman
+        conmon
+      ];
   };
+  virtualisation = {
+    podman = {
+      enable = true;
+      dockerCompat = true;
+    };
+  };
+
 }
