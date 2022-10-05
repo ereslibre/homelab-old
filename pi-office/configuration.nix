@@ -51,8 +51,6 @@
     users.root = { openssh.authorizedKeys.keys = sshKeys.ereslibre; };
   };
 
-  environment.systemPackages = with pkgs; [ htop ];
-
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
     font = "Lat2-Terminus16";
