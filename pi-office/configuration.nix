@@ -20,7 +20,7 @@
   time.timeZone = "Europe/Madrid";
 
   networking = {
-    hostName = "cpi-5";
+    hostName = "pi-office";
     firewall = {
       enable = true;
       trustedInterfaces = [ "tailscale0" ];
