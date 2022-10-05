@@ -17,7 +17,7 @@
   time.timeZone = "Europe/Madrid";
 
   networking = {
-    hostName = "pidesktop";
+    hostName = "pi-desktop";
     useDHCP = false;
     networkmanager.enable = true;
   };

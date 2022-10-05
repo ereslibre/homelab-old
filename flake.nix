@@ -21,25 +21,25 @@
         inherit (dotfiles) homeConfigurations homeConfigurationsRpi;
 
         nixosConfigurations = {
-          "cpi-5.lab.ereslibre.local" = dotfiles.nixpkgs-rpi.lib.nixosSystem {
+          "pi-office.office.ereslibre.local" = dotfiles.nixpkgs-rpi.lib.nixosSystem {
             system = "aarch64-linux";
             modules = [
-              ./cpi-5/configuration.nix
+              ./pi-office/configuration.nix
               dotfiles.home-manager-rpi.nixosModules.home-manager
               {
                 home-manager.users.ereslibre =
                   ((import "${dotfiles}/hm-configurations.nix" {
                     home-manager = dotfiles.home-manager-rpi;
                     nixpkgs = dotfiles.nixpkgs-rpi;
-                  })."ereslibre@cpi-5.lab.ereslibre.local".configuration);
+                  })."ereslibre@pi-office.office.ereslibre.local".configuration);
               }
             ];
           };
-          "pidesktop.lab.ereslibre.local" =
+          "pi-desktop.lab.ereslibre.local" =
             dotfiles.nixpkgs-rpi.lib.nixosSystem {
               system = "aarch64-linux";
               modules = [
-                ./pidesktop/configuration.nix
+                ./pi-desktop/configuration.nix
                 nixos-hardware.nixosModules.raspberry-pi-4
                 dotfiles.home-manager-rpi.nixosModules.home-manager
                 {
@@ -47,7 +47,7 @@
                     ((import "${dotfiles}/hm-configurations.nix" {
                       home-manager = dotfiles.home-manager-rpi;
                       nixpkgs = dotfiles.nixpkgs-rpi;
-                    })."ereslibre@pidesktop.lab.ereslibre.local".configuration);
+                    })."ereslibre@pi-desktop.lab.ereslibre.local".configuration);
                 }
               ];
             };
