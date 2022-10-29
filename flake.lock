@@ -6,14 +6,15 @@
         "home-manager": "home-manager",
         "home-manager-rpi": "home-manager-rpi",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-main": "nixpkgs-main",
         "nixpkgs-rpi": "nixpkgs-rpi"
       },
       "locked": {
-        "lastModified": 1666934197,
-        "narHash": "sha256-kXDT0TeHJaeLq5ZgAwbQ4xGJPrrZgvMf+eyeJXV3fro=",
+        "lastModified": 1667020438,
+        "narHash": "sha256-Xn01FGZ46Zd4AGCL4Vbg3nsU8+rMPjZnc9xFmzSymSY=",
         "owner": "ereslibre",
         "repo": "dotfiles",
-        "rev": "5fc3130a70c39b770f8dc743fe7c2c6ba21c7691",
+        "rev": "559d5747184fc8dd85abf25f9ed7786e4c71dbab",
         "type": "github"
       },
       "original": {
@@ -113,16 +114,31 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1666907825,
-        "narHash": "sha256-XQZx4mkWw+g/PtFuq8faCB4YjwZE+JheQLkcOPB6FD4=",
+        "lastModified": 1666961615,
+        "narHash": "sha256-+Sqz6zQA85Q14U/KwsJO386oxd47zDte8dqBGOtRJGg=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "86a34577e278d276ee5173e6b74c57afde879a6d",
+        "rev": "040c6d8374d090f46ab0e99f1f7c27a4529ecffd",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
         "ref": "release-22.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-main": {
+      "locked": {
+        "lastModified": 1667015859,
+        "narHash": "sha256-+A8n+R5iA3Mu8SQZLNAfwTcyx/lkAJv9jFRpSrXIzXY=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "457f54d4adcc7fade17fc784dac3499d62a9c188",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
         "repo": "nixpkgs",
         "type": "github"
       }
