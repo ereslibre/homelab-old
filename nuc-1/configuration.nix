@@ -29,6 +29,12 @@
       allowedUDPPorts = [ config.services.tailscale.port ];
       allowedTCPPorts = [ 22 ];
       checkReversePath = "loose";
+      extraCommands = ''
+        iptables -t nat -A POSTROUTING -o tailscale0 -j MASQUERADE
+      '';
+      extraStopCommands = ''
+        iptables -t nat -D POSTROUTING -o tailscale0 -j MASQUERADE || true
+      '';
     };
   };
 
