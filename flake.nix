@@ -21,7 +21,7 @@
         inherit (dotfiles) homeConfigurations homeConfigurationsRpi;
 
         nixosConfigurations = {
-          "pi-office.office.ereslibre.local" =
+          "pi-office.lab.ereslibre.local" =
             dotfiles.nixpkgs-rpi.lib.nixosSystem {
               system = "aarch64-linux";
               modules = [
@@ -33,7 +33,7 @@
                       inherit (dotfiles) nixpkgs-main;
                       home-manager = dotfiles.home-manager-rpi;
                       nixpkgs = dotfiles.nixpkgs-rpi;
-                    })."ereslibre@pi-office.office.ereslibre.local".configuration);
+                    })."ereslibre@pi-office.lab.ereslibre.local".configuration);
                 }
               ];
             };
