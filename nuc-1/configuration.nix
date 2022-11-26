@@ -25,7 +25,7 @@
     hostName = "nuc-1";
     firewall = {
       enable = true;
-      trustedInterfaces = [ "tailscale0" ];
+      trustedInterfaces = [ "enp89s0" "tailscale0" ];
       allowedUDPPorts = [ config.services.tailscale.port ];
       allowedTCPPorts = [ 22 ];
       checkReversePath = "loose";
