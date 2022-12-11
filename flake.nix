@@ -30,7 +30,6 @@
                 {
                   home-manager.users.ereslibre =
                     ((import "${dotfiles}/hm-configurations.nix" {
-                      inherit (dotfiles) nixpkgs-main;
                       home-manager = dotfiles.home-manager-rpi;
                       nixpkgs = dotfiles.nixpkgs-rpi;
                     })."ereslibre@pi-office.lab.ereslibre.local".configuration);
@@ -47,7 +46,6 @@
                 {
                   home-manager.users.ereslibre =
                     ((import "${dotfiles}/hm-configurations.nix" {
-                      inherit (dotfiles) nixpkgs-main;
                       home-manager = dotfiles.home-manager-rpi;
                       nixpkgs = dotfiles.nixpkgs-rpi;
                     })."ereslibre@pi-desktop.lab.ereslibre.local".configuration);
@@ -62,7 +60,7 @@
               {
                 home-manager.users.ereslibre =
                   ((import "${dotfiles}/hm-configurations.nix" {
-                    inherit (dotfiles) home-manager nixpkgs nixpkgs-main;
+                    inherit (dotfiles) home-manager nixpkgs;
                   })."ereslibre@nuc-1.lab.ereslibre.local".configuration);
               }
             ];
