@@ -9,11 +9,11 @@
         "nixpkgs-rpi": "nixpkgs-rpi"
       },
       "locked": {
-        "lastModified": 1670796128,
+        "lastModified": 1670798932,
         "narHash": "sha256-XEuwxZZGGSPZJSGS3TjjQHBEc0heQy9UQOWoRkLvFbI=",
         "owner": "ereslibre",
         "repo": "dotfiles",
-        "rev": "7d18bc52270d6104d123217a1f8294fa2d4d10bd",
+        "rev": "ab9845ab5f828f74238edf280761aa9396d0547d",
         "type": "github"
       },
       "original": {
