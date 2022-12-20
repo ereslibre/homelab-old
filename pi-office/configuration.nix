@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [ ./hardware-configuration.nix ../common/linux-node/podman.nix ];
 
   nix.extraOptions = ''
     experimental-features = nix-command flakes
