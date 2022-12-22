@@ -1,6 +1,6 @@
 .PHONY: switch
 switch:
-	sudo nixos-rebuild --flake '.#$(shell hostname -s).lab.ereslibre.local' switch
+	sudo nixos-rebuild --flake '.#$(shell hostname -s)' switch
 
 .PHONY: switch-hm
 switch-hm:

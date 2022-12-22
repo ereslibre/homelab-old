@@ -21,7 +21,7 @@
         inherit (dotfiles) homeConfigurations;
 
         nixosConfigurations = {
-          "pi-office.lab.ereslibre.local" = dotfiles.nixpkgs.lib.nixosSystem {
+          "pi-office" = dotfiles.nixpkgs.lib.nixosSystem {
             system = "aarch64-linux";
             modules = [
               ./pi-office/configuration.nix
@@ -30,11 +30,11 @@
                 home-manager.users.ereslibre =
                   ((import "${dotfiles}/hm-configurations.nix" {
                     inherit (dotfiles) home-manager nixpkgs;
-                  })."ereslibre@pi-office.lab.ereslibre.local".configuration);
+                  })."ereslibre@pi-office".configuration);
               }
             ];
           };
-          "pi-desktop.lab.ereslibre.local" = dotfiles.nixpkgs.lib.nixosSystem {
+          "pi-desktop" = dotfiles.nixpkgs.lib.nixosSystem {
             system = "aarch64-linux";
             modules = [
               ./pi-desktop/configuration.nix
@@ -44,11 +44,11 @@
                 home-manager.users.ereslibre =
                   ((import "${dotfiles}/hm-configurations.nix" {
                     inherit (dotfiles) home-manager nixpkgs;
-                  })."ereslibre@pi-desktop.lab.ereslibre.local".configuration);
+                  })."ereslibre@pi-desktop".configuration);
               }
             ];
           };
-          "nuc-1.lab.ereslibre.local" = dotfiles.nixpkgs.lib.nixosSystem {
+          "nuc-1" = dotfiles.nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
             modules = [
               ./nuc-1/configuration.nix
@@ -57,7 +57,7 @@
                 home-manager.users.ereslibre =
                   ((import "${dotfiles}/hm-configurations.nix" {
                     inherit (dotfiles) home-manager nixpkgs;
-                  })."ereslibre@nuc-1.lab.ereslibre.local".configuration);
+                  })."ereslibre@nuc-1".configuration);
               }
             ];
           };
