@@ -3,10 +3,6 @@
 {
   imports = [ ./hardware-configuration.nix ../common/linux-node/podman.nix ];
 
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
-  '';
-
   boot = {
     loader = {
       systemd-boot.enable = true;
