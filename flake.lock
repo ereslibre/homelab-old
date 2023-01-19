@@ -30,11 +30,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1674018508,
-        "narHash": "sha256-jVALY/5UNhNSFsfTtZByEZMQ1XQ1NBKVpFxBy2SDIgQ=",
+        "lastModified": 1674105123,
+        "narHash": "sha256-YqSELwW6ILfPH3z7PEAnX1FFLdKXPc+8MhWd8PtRil8=",
         "owner": "ereslibre",
         "repo": "dotfiles",
-        "rev": "9e1e9585132b11cff280b3f9f96bf75384688707",
+        "rev": "dc87a6cd709e1c7798e181b4acdb712006bf1085",
         "type": "github"
       },
       "original": {
@@ -256,11 +256,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1674016469,
-        "narHash": "sha256-IRS85FhW322rQOVcg6XDHMYUkWKgj59BV8yvjVXnIf8=",
+        "lastModified": 1674091526,
+        "narHash": "sha256-eLhLKOpF1ix5xZeFF9g8uE1stdyxuBLJvWQ20gLbDto=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "440ca80fa7675a2cc42c29b1c9b9c9af33344882",
+        "rev": "fc5b90fd72177d9bcf435b10c12bb943549748c6",
         "type": "github"
       },
       "original": {
