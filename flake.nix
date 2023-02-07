@@ -29,7 +29,7 @@
               {
                 home-manager.users.ereslibre =
                   ((import "${dotfiles}/hm-configurations.nix" {
-                    inherit (dotfiles) home-manager nixpkgs;
+                    inherit (dotfiles) devenv home-manager nixpkgs;
                   })."ereslibre@pi-office".configuration);
               }
             ];
@@ -43,7 +43,7 @@
               {
                 home-manager.users.ereslibre =
                   ((import "${dotfiles}/hm-configurations.nix" {
-                    inherit (dotfiles) home-manager nixpkgs;
+                    inherit (dotfiles) devenv home-manager nixpkgs;
                   })."ereslibre@pi-desktop".configuration);
               }
             ];
@@ -56,7 +56,7 @@
               {
                 home-manager.users.ereslibre =
                   ((import "${dotfiles}/hm-configurations.nix" {
-                    inherit (dotfiles) home-manager nixpkgs;
+                    inherit (dotfiles) devenv home-manager nixpkgs;
                   })."ereslibre@nuc-1".configuration);
               }
             ];
