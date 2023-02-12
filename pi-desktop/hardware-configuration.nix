@@ -8,17 +8,24 @@
 {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "usbhid" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "usbhid" "usb_storage" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/44444444-4444-4444-8888-888888888888";
-    fsType = "ext4";
+  fileSystems = {
+    "/" = {
+      device = "/dev/disk/by-uuid/ccf07b6e-7d72-4bb8-84f5-bd7b8b8d3784";
+      fsType = "ext4";
+    };
+    "/boot" = {
+      device = "/dev/disk/by-uuid/8614-8682";
+      fsType = "vfat";
+    };
   };
 
-  swapDevices = [ ];
+  swapDevices =
+    [{ device = "/dev/disk/by-uuid/58e18194-9ac9-40af-a10f-50fbc6ab4d39"; }];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
 }
