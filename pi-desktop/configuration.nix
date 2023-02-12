@@ -3,6 +3,17 @@
 {
   imports = [ ./hardware-configuration.nix ../common/linux-node/podman.nix ];
 
+  boot = {
+    loader = {
+      grub.enable = false;
+      generic-extlinux-compatible.enable = false;
+      raspberryPi = {
+        enable = true;
+        version = 4;
+      };
+    };
+  };
+
   # Use the extlinux boot loader. (NixOS wants to enable GRUB by default)
   boot.loader.grub.enable = false;
   # Enables the generation of /boot/extlinux/extlinux.conf
