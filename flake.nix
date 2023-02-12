@@ -25,6 +25,7 @@
             system = "aarch64-linux";
             modules = [
               ./pi-office/configuration.nix
+              nixos-hardware.nixosModules.raspberry-pi-4
               dotfiles.home-manager.nixosModules.home-manager
               {
                 home-manager.users.ereslibre =
