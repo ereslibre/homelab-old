@@ -3,7 +3,7 @@
 ## Bootstrap a machine
 
 ```
-sudo nixos-install --flake "github:ereslibre/homelab#<hostname>" switch
+sudo nixos-install --flake "github:ereslibre/homelab#<hostname>"
 ```
 
 ## Update a machine
