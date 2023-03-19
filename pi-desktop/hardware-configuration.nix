@@ -15,17 +15,17 @@
 
   fileSystems = {
     "/" = {
-      device = "/dev/disk/by-uuid/ccf07b6e-7d72-4bb8-84f5-bd7b8b8d3784";
+      device = "/dev/disk/by-uuid/3c593b35-f031-4504-a835-327807121d15";
       fsType = "ext4";
     };
     "/boot" = {
-      device = "/dev/disk/by-uuid/8614-8682";
+      device = "/dev/disk/by-uuid/4709-9797";
       fsType = "vfat";
     };
   };
 
   swapDevices =
-    [{ device = "/dev/disk/by-uuid/58e18194-9ac9-40af-a10f-50fbc6ab4d39"; }];
+    [{ device = "/dev/disk/by-uuid/2f9b6983-f691-48d0-a2aa-cb416e106fa0"; }];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
 }
