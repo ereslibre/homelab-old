@@ -6,7 +6,11 @@
   boot = {
     loader = {
       grub.enable = false;
-      generic-extlinux-compatible.enable = true;
+      generic-extlinux-compatible.enable = false;
+      raspberryPi = {
+        enable = true;
+        version = 4;
+      };
     };
     kernel.sysctl."net.ipv4.ip_forward" = 1;
   };
