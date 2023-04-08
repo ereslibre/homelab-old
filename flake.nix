@@ -8,8 +8,7 @@
   };
 
   outputs = { flake-utils, dotfiles, nixos-hardware, ... }:
-    flake-utils.lib.eachSystem
-    (flake-utils.lib.defaultSystems ++ [ "aarch64-darwin" ]) (system:
+    flake-utils.lib.eachDefaultSystem (system:
       let pkgs = dotfiles.nixpkgs.legacyPackages.${system};
       in {
         devShells.default = pkgs.mkShell {
