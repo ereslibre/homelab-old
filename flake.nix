@@ -61,6 +61,19 @@
               }
             ];
           };
+          "nuc-2" = dotfiles.nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            modules = [
+              ./nuc-2/configuration.nix
+              dotfiles.home-manager.nixosModules.home-manager
+              {
+                home-manager.users.ereslibre =
+                  ((import "${dotfiles}/hm-configurations.nix" {
+                    inherit (dotfiles) devenv home-manager nixpkgs;
+                  })."ereslibre@nuc-2".configuration);
+              }
+            ];
+          };
         };
       };
 
