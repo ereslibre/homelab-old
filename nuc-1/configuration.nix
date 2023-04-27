@@ -77,30 +77,6 @@
     tailscale.enable = true;
   };
 
-  systemd.services.tailscale-autoconnect = {
-    description = "Automatic connection to Tailscale";
-
-    after = [ "network-pre.target" "tailscale.service" ];
-    wants = [ "network-pre.target" "tailscale.service" ];
-    wantedBy = [ "multi-user.target" ];
-
-    serviceConfig.type = "oneshot";
-
-    script = with pkgs; ''
-      # FIXME (wait on an event): wait for tailscaled to settle
-      sleep 2
-
-      # check if already authenticated
-      status="$(${tailscale}/bin/tailscale status -json | ${jq}/bin/jq -r .BackendState)"
-      if [ $status = "Running" ]; then # if so, then do nothing
-        exit 0
-      fi
-
-      # otherwise authenticate -- authkey in public, no good, but hey, one use and testing
-      ${tailscale}/bin/tailscale up -authkey tskey-kEgCWX4CNTRL-R7q18KKK9r6Mfdq3Ci5vJ
-    '';
-  };
-
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
