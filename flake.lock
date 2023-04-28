@@ -27,14 +27,15 @@
         "devenv": "devenv",
         "flake-utils": "flake-utils_2",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_2",
+        "nixpkgs-release-22-11": "nixpkgs-release-22-11"
       },
       "locked": {
-        "lastModified": 1682671273,
-        "narHash": "sha256-khOtycr43T9IoDDn49CmHbQbyjHbyyS5pKPRo43GFWs=",
+        "lastModified": 1682671841,
+        "narHash": "sha256-46OLKqjyXfDzg2NKFCB2k0WQD8byBK9BO2pOa+0ATIA=",
         "owner": "ereslibre",
         "repo": "dotfiles",
-        "rev": "f292a813a13c2e531f76645b3e6a07cf51f46862",
+        "rev": "c57d2315f6b67818aed809f7e378d8c063d93226",
         "type": "github"
       },
       "original": {
@@ -240,6 +241,22 @@
         "owner": "NixOS",
         "repo": "nixpkgs",
         "rev": "215d4d0fd80ca5163643b03a33fde804a29cc1e2",
+        "type": "github"
+      }
+    },
+    "nixpkgs-release-22-11": {
+      "locked": {
+        "lastModified": 1682669017,
+        "narHash": "sha256-Vi+p4y3wnl0/4gcwTdmCO398kKlDaUrNROtf3GOD2NY=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "7449971a3ecf857b4a554cf79b1d9dcc1a4647d8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "release-22.11",
+        "repo": "nixpkgs",
         "type": "github"
       }
     },
