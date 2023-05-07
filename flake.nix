@@ -9,7 +9,7 @@
 
   outputs = { flake-utils, dotfiles, nixos-hardware, ... }:
     flake-utils.lib.eachDefaultSystem (system:
-      let pkgs = dotfiles.nixpkgs-release-22-11.legacyPackages.${system};
+      let pkgs = dotfiles.nixpkgs.legacyPackages.${system};
       in {
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [ cachix nix-linter nixfmt ];
