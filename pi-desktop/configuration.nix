@@ -12,6 +12,7 @@
         version = 4;
       };
     };
+    kernelParams = [ "nohibernate" ];
   };
 
   environment.systemPackages = with pkgs; [ man-pages man-pages-posix ];

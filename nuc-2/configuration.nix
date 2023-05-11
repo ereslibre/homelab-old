@@ -8,6 +8,7 @@
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
+    kernelParams = [ "nohibernate" ];
   };
 
   environment.systemPackages = with pkgs; [ man-pages man-pages-posix ];

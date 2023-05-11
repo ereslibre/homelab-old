@@ -12,6 +12,7 @@
         version = 4;
       };
     };
+    kernelParams = [ "nohibernate" ];
     kernel.sysctl."net.ipv4.ip_forward" = 1;
   };
 
