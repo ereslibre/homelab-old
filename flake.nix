@@ -15,66 +15,77 @@
           buildInputs = with pkgs; [ cachix nix-linter nixfmt ];
         };
       }) // {
-        # Make Home Manager configurations available from here for
-        # applying locally as well if desired.
-        inherit (dotfiles) homeConfigurations;
-
         nixosConfigurations = {
           "pi-office" = dotfiles.nixpkgs.lib.nixosSystem {
             system = "aarch64-linux";
-            modules = [
+            modules = let
+              machineConfig = (import "${dotfiles}/hm-configurations.nix" {
+                inherit (dotfiles) devenv home-manager nixpkgs;
+              }).raw."ereslibre@pi-office";
+            in [
               ./pi-office/configuration.nix
               nixos-hardware.nixosModules.raspberry-pi-4
               dotfiles.home-manager.nixosModules.home-manager
               {
-                home-manager.users.ereslibre =
-                  ((import "${dotfiles}/hm-configurations.nix" {
-                    inherit (dotfiles) devenv home-manager nixpkgs;
-                  })."ereslibre@pi-office".configuration);
+                home-manager.extraSpecialArgs = machineConfig.extraSpecialArgs;
+                home-manager.users.ereslibre = { config, pkgs, ... }: {
+                  imports = machineConfig.modules;
+                };
               }
             ];
           };
           "pi-desktop" = dotfiles.nixpkgs.lib.nixosSystem {
             system = "aarch64-linux";
-            modules = [
+            modules = let
+              machineConfig = (import "${dotfiles}/hm-configurations.nix" {
+                inherit (dotfiles) devenv home-manager nixpkgs;
+              }).raw."ereslibre@pi-desktop";
+            in [
               ./pi-desktop/configuration.nix
               nixos-hardware.nixosModules.raspberry-pi-4
               dotfiles.home-manager.nixosModules.home-manager
               {
-                home-manager.users.ereslibre =
-                  ((import "${dotfiles}/hm-configurations.nix" {
-                    inherit (dotfiles) devenv home-manager nixpkgs;
-                  })."ereslibre@pi-desktop".configuration);
+                home-manager.extraSpecialArgs = machineConfig.extraSpecialArgs;
+                home-manager.users.ereslibre = { config, pkgs, ... }: {
+                  imports = machineConfig.modules;
+                };
               }
             ];
           };
           "nuc-1" = dotfiles.nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
-            modules = [
+            modules = let
+              machineConfig = (import "${dotfiles}/hm-configurations.nix" {
+                inherit (dotfiles) devenv home-manager nixpkgs;
+              }).raw."ereslibre@nuc-1";
+            in [
               ./nuc-1/configuration.nix
               dotfiles.home-manager.nixosModules.home-manager
               {
-                home-manager.users.ereslibre =
-                  ((import "${dotfiles}/hm-configurations.nix" {
-                    inherit (dotfiles) devenv home-manager nixpkgs;
-                  })."ereslibre@nuc-1".configuration);
+                home-manager.extraSpecialArgs = machineConfig.extraSpecialArgs;
+                home-manager.users.ereslibre = { config, pkgs, ... }: {
+                  imports = machineConfig.modules;
+                };
               }
             ];
           };
           "nuc-2" = dotfiles.nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
-            modules = [
+            modules = let
+              machineConfig = (import "${dotfiles}/hm-configurations.nix" {
+                inherit (dotfiles) devenv home-manager nixpkgs;
+              }).raw."ereslibre@nuc-2";
+            in [
               ./nuc-2/configuration.nix
               dotfiles.home-manager.nixosModules.home-manager
               {
-                home-manager.users.ereslibre =
-                  ((import "${dotfiles}/hm-configurations.nix" {
-                    inherit (dotfiles) devenv home-manager nixpkgs;
-                  })."ereslibre@nuc-2".configuration);
+                home-manager.extraSpecialArgs = machineConfig.extraSpecialArgs;
+                home-manager.users.ereslibre = { config, pkgs, ... }: {
+                  imports = machineConfig.modules;
+                };
               }
             ];
           };
         };
       };
-
 }
