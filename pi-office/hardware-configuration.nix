@@ -1,12 +1,14 @@
-{ lib, modulesPath, ... }:
-
 {
-  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+  lib,
+  modulesPath,
+  ...
+}: {
+  imports = [(modulesPath + "/installer/scan/not-detected.nix")];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "usbhid" "usb_storage" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ ];
-  boot.extraModulePackages = [ ];
+  boot.initrd.availableKernelModules = ["xhci_pci" "usbhid" "usb_storage"];
+  boot.initrd.kernelModules = [];
+  boot.kernelModules = [];
+  boot.extraModulePackages = [];
 
   fileSystems = {
     "/" = {
@@ -19,8 +21,7 @@
     };
   };
 
-  swapDevices =
-    [{ device = "/dev/disk/by-uuid/81a61292-562f-4bf8-9af7-13b76f19e924"; }];
+  swapDevices = [{device = "/dev/disk/by-uuid/81a61292-562f-4bf8-9af7-13b76f19e924";}];
 
   networking.useDHCP = lib.mkDefault true;
 

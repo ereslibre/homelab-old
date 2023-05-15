@@ -1,12 +1,14 @@
-{ lib, modulesPath, ... }:
-
 {
-  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+  lib,
+  modulesPath,
+  ...
+}: {
+  imports = [(modulesPath + "/installer/scan/not-detected.nix")];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "usbhid" "usb_storage" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ ];
-  boot.extraModulePackages = [ ];
+  boot.initrd.availableKernelModules = ["xhci_pci" "usbhid" "usb_storage"];
+  boot.initrd.kernelModules = [];
+  boot.kernelModules = [];
+  boot.extraModulePackages = [];
 
   fileSystems = {
     "/" = {
@@ -19,8 +21,7 @@
     };
   };
 
-  swapDevices =
-    [{ device = "/dev/disk/by-uuid/2f9b6983-f691-48d0-a2aa-cb416e106fa0"; }];
+  swapDevices = [{device = "/dev/disk/by-uuid/2f9b6983-f691-48d0-a2aa-cb416e106fa0";}];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
 }

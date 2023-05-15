@@ -1,7 +1,5 @@
-{ pkgs, ... }:
-
-{
-  imports = [ ./hardware-configuration.nix ../common/linux-node/podman.nix ];
+{pkgs, ...}: {
+  imports = [./hardware-configuration.nix ../common/linux-node/podman.nix];
 
   boot = {
     loader = {
@@ -12,10 +10,10 @@
         version = 4;
       };
     };
-    kernelParams = [ "nohibernate" ];
+    kernelParams = ["nohibernate"];
   };
 
-  environment.systemPackages = with pkgs; [ man-pages man-pages-posix ];
+  environment.systemPackages = with pkgs; [man-pages man-pages-posix];
 
   time.timeZone = "Europe/Madrid";
 
@@ -52,13 +50,12 @@
     mutableUsers = false;
     users.ereslibre = {
       isNormalUser = true;
-      initialHashedPassword =
-        "$6$M8PJiTY.2YaoUNLr$61IUEobA75b.vMbPLPxVkU4d6Rs5CuYB2KlQHX4B2Gr09Zx70Q99w3c1DyJoyt0AvXbNYS6Q7cNKdA35c3ZMU/";
-      extraGroups = [ "wheel" ];
+      initialHashedPassword = "$6$M8PJiTY.2YaoUNLr$61IUEobA75b.vMbPLPxVkU4d6Rs5CuYB2KlQHX4B2Gr09Zx70Q99w3c1DyJoyt0AvXbNYS6Q7cNKdA35c3ZMU/";
+      extraGroups = ["wheel"];
       uid = 1000;
       openssh.authorizedKeys.keys = sshKeys.ereslibre;
     };
-    users.root = { openssh.authorizedKeys.keys = sshKeys.ereslibre; };
+    users.root = {openssh.authorizedKeys.keys = sshKeys.ereslibre;};
   };
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -95,5 +92,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.05"; # Did you read the comment?
-
 }

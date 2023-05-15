@@ -1,18 +1,20 @@
-{ config, pkgs, ... }:
-
 {
-  imports = [ ./hardware-configuration.nix ../common/linux-node/podman.nix ];
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [./hardware-configuration.nix ../common/linux-node/podman.nix];
 
   boot = {
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
-    kernelParams = [ "nohibernate" ];
+    kernelParams = ["nohibernate"];
     kernel.sysctl."net.ipv4.ip_forward" = 1;
   };
 
-  environment.systemPackages = with pkgs; [ man-pages man-pages-posix ];
+  environment.systemPackages = with pkgs; [man-pages man-pages-posix];
 
   documentation = {
     dev.enable = true;
@@ -25,9 +27,9 @@
     hostName = "nuc-1";
     firewall = {
       enable = true;
-      trustedInterfaces = [ "enp89s0" "tailscale0" ];
-      allowedUDPPorts = [ config.services.tailscale.port ];
-      allowedTCPPorts = [ 22 ];
+      trustedInterfaces = ["enp89s0" "tailscale0"];
+      allowedUDPPorts = [config.services.tailscale.port];
+      allowedTCPPorts = [22];
       checkReversePath = "loose";
       extraCommands = ''
         iptables -t nat -A POSTROUTING -o tailscale0 -j MASQUERADE
@@ -50,13 +52,12 @@
     defaultUserShell = pkgs.zsh;
     users.ereslibre = {
       isNormalUser = true;
-      initialHashedPassword =
-        "$6$M8PJiTY.2YaoUNLr$61IUEobA75b.vMbPLPxVkU4d6Rs5CuYB2KlQHX4B2Gr09Zx70Q99w3c1DyJoyt0AvXbNYS6Q7cNKdA35c3ZMU/";
-      extraGroups = [ "wheel" ];
+      initialHashedPassword = "$6$M8PJiTY.2YaoUNLr$61IUEobA75b.vMbPLPxVkU4d6Rs5CuYB2KlQHX4B2Gr09Zx70Q99w3c1DyJoyt0AvXbNYS6Q7cNKdA35c3ZMU/";
+      extraGroups = ["wheel"];
       uid = 1000;
       openssh.authorizedKeys.keys = sshKeys.ereslibre;
     };
-    users.root = { openssh.authorizedKeys.keys = sshKeys.ereslibre; };
+    users.root = {openssh.authorizedKeys.keys = sshKeys.ereslibre;};
   };
 
   i18n.defaultLocale = "en_US.UTF-8";
@@ -89,5 +90,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.05"; # Did you read the comment?
-
 }
