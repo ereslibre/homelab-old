@@ -33,7 +33,7 @@
                     inherit (dotfiles) devenv home-manager nixpkgs;
                   })
                   .raw
-                  ."ereslibre@nuc-2";
+                  ."ereslibre@nuc-2"; # FIXME
               in [
                 dotfiles.home-manager.nixosModules.home-manager
                 {
