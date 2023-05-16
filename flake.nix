@@ -32,8 +32,8 @@
                   (import "${dotfiles}/hm-configurations.nix" {
                     inherit (dotfiles) devenv home-manager nixpkgs;
                   })
-                  .raw
-                  ."ereslibre@nuc-2"; # FIXME
+                  ."ereslibre@nuc-2" # FIXME
+                  .rawConfig;
               in [
                 dotfiles.home-manager.nixosModules.home-manager
                 {
