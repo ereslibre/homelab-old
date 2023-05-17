@@ -38,12 +38,8 @@
                 dotfiles.home-manager.nixosModules.home-manager
                 {
                   home-manager.extraSpecialArgs =
-                    (hmConfig "ereslibre" "nuc-2").extraSpecialArgs; # FIXME
-                  home-manager.users = builtins.listToAttrs (map (user: {
-                      name = user;
-                      value = {...}: {imports = (hmConfig user host).modules;};
-                    })
-                    configuration.users);
+                    (hmConfig configuration.user host).extraSpecialArgs;
+                  home-manager.users.${configuration.user} = {imports = (hmConfig configuration.user host).modules;};
                 }
               ]);
           })
@@ -52,7 +48,7 @@
       nixosConfigurations = mapMachineConfigurations {
         "pi-office" = {
           system = "aarch64-linux";
-          users = ["ereslibre"];
+          user = "ereslibre";
           modules = [
             ./pi-office/configuration.nix
             nixos-hardware.nixosModules.raspberry-pi-4
@@ -60,7 +56,7 @@
         };
         "pi-desktop" = {
           system = "aarch64-linux";
-          users = ["ereslibre"];
+          user = "ereslibre";
           modules = [
             ./pi-desktop/configuration.nix
             nixos-hardware.nixosModules.raspberry-pi-4
@@ -68,12 +64,12 @@
         };
         "nuc-1" = {
           system = "x86_64-linux";
-          users = ["ereslibre"];
+          user = "ereslibre";
           modules = [./nuc-1/configuration.nix];
         };
         "nuc-2" = {
           system = "x86_64-linux";
-          users = ["ereslibre"];
+          user = "ereslibre";
           modules = [./nuc-2/configuration.nix];
         };
       };
