@@ -6,7 +6,12 @@
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
-    kernelParams = ["nohibernate"];
+    kernelParams = [
+      # On this machine, at certain time after startup, dmesg says:
+      #   [  144.383019] irq 16: nobody cared (try booting with the "irqpoll" option)
+      "irqpoll"
+      "nohibernate"
+    ];
   };
 
   environment.systemPackages = with pkgs; [man-pages man-pages-posix];
