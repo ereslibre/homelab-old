@@ -1,3 +1,0 @@
-Until automated, run manually:
-
-sudo tailscale up --accept-routes --advertise-routes=10.0.10.0/24

@@ -46,14 +46,6 @@
         configurations;
     in {
       nixosConfigurations = mapMachineConfigurations {
-        "pi-office" = {
-          system = "aarch64-linux";
-          user = "ereslibre";
-          modules = [
-            ./pi-office/configuration.nix
-            nixos-hardware.nixosModules.raspberry-pi-4
-          ];
-        };
         "pi-desktop" = {
           system = "aarch64-linux";
           user = "ereslibre";
