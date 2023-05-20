@@ -29,7 +29,7 @@
       enable = true;
       trustedInterfaces = ["enp89s0" "tailscale0"];
       allowedUDPPorts = [config.services.tailscale.port];
-      allowedTCPPorts = [22];
+      allowedTCPPorts = [22 6443];
       checkReversePath = "loose";
       extraCommands = ''
         iptables -t nat -A POSTROUTING -o tailscale0 -j MASQUERADE
@@ -70,6 +70,14 @@
 
   services = {
     fwupd.enable = true;
+    k3s = {
+      enable = true;
+      role = "server";
+      extraFlags = toString [
+        "--disable"
+        "traefik"
+      ];
+    };
     openssh = {
       enable = true;
       settings = {
