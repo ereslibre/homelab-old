@@ -31,14 +31,12 @@
 
   programs.zsh.enable = true;
 
-  # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
     displayManager.gdm.enable = true;
     desktopManager.gnome.enable = true;
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users = let
     sshKeys = {
       ereslibre = [
@@ -58,18 +56,8 @@
     users.root = {openssh.authorizedKeys.keys = sshKeys.ereslibre;};
   };
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
   services = {
+    fwupd.enable = true;
     openssh = {
       enable = true;
       settings = {
