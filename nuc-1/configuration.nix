@@ -76,6 +76,8 @@
       extraFlags = toString [
         "--disable"
         "traefik"
+        "--tls-san"
+        "nuc-1.ereslibre.net"
       ];
     };
     openssh = {
