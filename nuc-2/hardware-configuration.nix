@@ -8,11 +8,9 @@
 
   boot.initrd.availableKernelModules = [
     "xhci_pci"
-    "thunderbolt"
     "ahci"
     "nvme"
     "usbhid"
-    "rtsx_pci_sdmmc"
   ];
   boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-intel"];
