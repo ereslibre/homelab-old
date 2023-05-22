@@ -25,12 +25,7 @@
 
   networking = {
     hostName = "nuc-1";
-    firewall = {
-      enable = true;
-      trustedInterfaces = ["enp89s0" "tailscale0"];
-      allowedUDPPorts = [config.services.tailscale.port];
-      allowedTCPPorts = [22 6443];
-      checkReversePath = "loose";
+    nat = {
       extraCommands = ''
         iptables -t nat -A POSTROUTING -o tailscale0 -j MASQUERADE
       '';
@@ -38,6 +33,7 @@
         iptables -t nat -D POSTROUTING -o tailscale0 -j MASQUERADE || true
       '';
     };
+    firewall.enable = false;
   };
 
   users = let

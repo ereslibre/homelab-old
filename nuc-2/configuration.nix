@@ -25,12 +25,7 @@
 
   networking = {
     hostName = "nuc-2";
-    firewall = {
-      enable = true;
-      trustedInterfaces = ["enp89s0"];
-      allowedTCPPorts = [22];
-      checkReversePath = "loose";
-    };
+    firewall.enable = false;
   };
 
   users = let
