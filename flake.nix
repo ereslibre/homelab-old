@@ -64,6 +64,11 @@
           user = "ereslibre";
           modules = [./nuc-2/configuration.nix];
         };
+        "nuc-3" = {
+          system = "x86_64-linux";
+          user = "ereslibre";
+          modules = [./nuc-3/configuration.nix];
+        };
       };
     });
 }
