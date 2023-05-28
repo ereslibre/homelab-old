@@ -12,16 +12,16 @@
 
   fileSystems = {
     "/" = {
-      device = "/dev/disk/by-uuid/3c593b35-f031-4504-a835-327807121d15";
+      device = "/dev/disk/by-label/NIXROOT";
       fsType = "ext4";
     };
     "/boot" = {
-      device = "/dev/disk/by-uuid/4709-9797";
+      device = "/dev/disk/by-label/NIXBOOT";
       fsType = "vfat";
     };
   };
 
-  swapDevices = [{device = "/dev/disk/by-uuid/2f9b6983-f691-48d0-a2aa-cb416e106fa0";}];
+  swapDevices = [{device = "/dev/disk/by-label/SWAP";}];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
 }
