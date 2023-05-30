@@ -26,7 +26,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        host: [nuc-1, nuc-2, nuc-3, pi-desktop]
+        host: [nuc-1, nuc-2, nuc-3]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout repository
