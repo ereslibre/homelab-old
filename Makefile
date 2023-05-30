@@ -1,6 +1,12 @@
+ACTIVATION_HOST ?= $(shell hostname -s)
+
 .PHONY: switch
 switch:
-	sudo nixos-rebuild --flake '.#$(shell hostname -s)' switch
+	sudo nixos-rebuild --flake '.#${ACTIVATION_HOST}' switch
+
+.PHONY: build
+build:
+	sudo nixos-rebuild --flake '.#${ACTIVATION_HOST}' build
 
 .PHONY: fmt
 fmt:
