@@ -6,7 +6,7 @@ switch:
 
 .PHONY: build
 build:
-	nix build '.#nixosConfigurations.${ACTIVATION_HOST}'
+	nix build '.#nixosConfigurations.${ACTIVATION_HOST}.config.system.build.toplevel'
 
 .PHONY: fmt
 fmt:
