@@ -2,9 +2,13 @@
   description = "Home lab";
 
   inputs = {
-    flake-utils.url = "github:numtide/flake-utils";
     dotfiles.url = "github:ereslibre/dotfiles";
+    flake-utils.url = "github:numtide/flake-utils";
     nixos-hardware.url = "github:nixos/nixos-hardware";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "dotfiles";
+    };
   };
 
   outputs = {
