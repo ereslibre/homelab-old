@@ -7,7 +7,7 @@
 
   sops.defaultSopsFile = ./secrets.yaml;
 
-  sops.secrets.k3s_token = {
+  sops.secrets.k3s-token = {
     restartUnits = ["k3s.service"];
   };
 
@@ -72,7 +72,7 @@
       enable = true;
       role = "agent";
       serverAddr = "https://nuc-1:6443";
-      tokenFile = config.sops.secrets.k3s_token.path;
+      tokenFile = config.sops.secrets.k3s-token.path;
     };
     openssh = {
       enable = true;
