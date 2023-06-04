@@ -12,9 +12,10 @@
   };
 
   outputs = {
-    flake-utils,
     dotfiles,
+    flake-utils,
     nixos-hardware,
+    sops-nix,
     ...
   }:
     flake-utils.lib.eachDefaultSystem (system: let
@@ -61,12 +62,18 @@
         "nuc-1" = {
           system = "x86_64-linux";
           user = "ereslibre";
-          modules = [./nuc-1/configuration.nix];
+          modules = [
+            ./nuc-1/configuration.nix
+            sops-nix.nixosModules.sops
+          ];
         };
         "nuc-2" = {
           system = "x86_64-linux";
           user = "ereslibre";
-          modules = [./nuc-2/configuration.nix];
+          modules = [
+            ./nuc-2/configuration.nix
+            sops-nix.nixosModules.sops
+          ];
         };
         "nuc-3" = {
           system = "x86_64-linux";
