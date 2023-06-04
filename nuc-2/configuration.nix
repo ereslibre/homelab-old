@@ -3,6 +3,10 @@
 
   sops.defaultSopsFile = ./secrets.yaml;
 
+  sops.secrets.k3s_token = {
+    restartUnits = ["k3s.service"];
+  };
+
   boot = {
     loader = {
       systemd-boot.enable = true;
@@ -60,6 +64,11 @@
 
   services = {
     fwupd.enable = true;
+    k3s = {
+      enable = true;
+      role = "agent";
+      tokenFile = config.sops.secrets.k3s_token.path;
+    };
     openssh = {
       enable = true;
       settings = {
