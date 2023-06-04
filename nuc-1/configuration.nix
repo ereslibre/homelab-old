@@ -5,6 +5,12 @@
 }: {
   imports = [./hardware-configuration.nix ../common/linux-node/podman.nix];
 
+  sops.defaultSopsFile = ./secrets.yaml;
+
+  sops.secrets.k3s_token = {
+    restartUnits = ["k3s.service"];
+  };
+
   boot = {
     loader = {
       systemd-boot.enable = true;
@@ -69,6 +75,7 @@
     k3s = {
       enable = true;
       role = "server";
+      tokenFile = config.sops.secrets.k3s_token.path;
       extraFlags = toString [
         "--disable"
         "traefik"

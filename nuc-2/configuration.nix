@@ -1,6 +1,8 @@
 {pkgs, ...}: {
   imports = [./hardware-configuration.nix ../common/linux-node/podman.nix];
 
+  sops.defaultSopsFile = ./secrets.yaml;
+
   boot = {
     loader = {
       systemd-boot.enable = true;

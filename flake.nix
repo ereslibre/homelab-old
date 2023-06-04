@@ -63,16 +63,16 @@
           system = "x86_64-linux";
           user = "ereslibre";
           modules = [
-            ./nuc-1/configuration.nix
             sops-nix.nixosModules.sops
+            ./nuc-1/configuration.nix
           ];
         };
         "nuc-2" = {
           system = "x86_64-linux";
           user = "ereslibre";
           modules = [
-            ./nuc-2/configuration.nix
             sops-nix.nixosModules.sops
+            ./nuc-2/configuration.nix
           ];
         };
         "nuc-3" = {
