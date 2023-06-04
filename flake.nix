@@ -22,7 +22,7 @@
       pkgs = dotfiles.nixpkgs.legacyPackages.${system};
     in {
       devShells.default = pkgs.mkShell {
-        buildInputs = with pkgs; [alejandra cachix];
+        buildInputs = with pkgs; [age alejandra cachix sops];
       };
     })
     // (let
