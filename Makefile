@@ -18,4 +18,4 @@ gen-age-pub:
 
 .PHONY: edit-secrets
 edit-secrets:
-	nix run nixpkgs#sops -- ${HOST}/secrets/secrets.yml
+	nix run nixpkgs#sops -- ${HOST}/secrets.yaml
