@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [./hardware-configuration.nix ../common/linux-node/podman.nix];
 
   boot = {
