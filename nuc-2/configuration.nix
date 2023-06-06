@@ -71,6 +71,10 @@
     k3s = {
       enable = true;
       role = "agent";
+      extraFlags = toString [
+        "--node-external-ip"
+        "10.0.4.31"
+      ];
       serverAddr = "https://nuc-1:6443";
       tokenFile = config.sops.secrets.k3s-token.path;
     };
