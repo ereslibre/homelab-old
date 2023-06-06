@@ -79,6 +79,8 @@
       extraFlags = toString [
         "--disable"
         "traefik"
+        "--node-external-ip"
+        "10.0.4.30"
         "--tls-san"
         "nuc-1.ereslibre.net"
       ];
