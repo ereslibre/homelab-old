@@ -75,7 +75,7 @@
         "--node-external-ip"
         "10.0.4.31"
       ];
-      serverAddr = "https://nuc-1:6443";
+      serverAddr = "https://nuc-1.ereslibre.net:6443";
       tokenFile = config.sops.secrets.k3s-token.path;
     };
     openssh = {
