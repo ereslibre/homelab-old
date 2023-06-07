@@ -22,6 +22,7 @@
       "irqpoll"
       "nohibernate"
     ];
+    kernel.sysctl."net.ipv4.ip_forward" = 1;
   };
 
   environment.systemPackages = with pkgs; [man-pages man-pages-posix];
@@ -72,7 +73,7 @@
       enable = true;
       role = "agent";
       extraFlags = toString [
-        "--node-external-ip"
+        "--node-ip"
         "10.0.4.31"
       ];
       serverAddr = "https://nuc-1.ereslibre.net:6443";
