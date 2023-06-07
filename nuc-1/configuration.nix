@@ -33,10 +33,10 @@
     hostName = "nuc-1";
     nat = {
       extraCommands = ''
-        iptables -t nat -A POSTROUTING -o tailscale0 -j MASQUERADE
+        ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -o tailscale0 -j MASQUERADE
       '';
       extraStopCommands = ''
-        iptables -t nat -D POSTROUTING -o tailscale0 -j MASQUERADE || true
+        ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -o tailscale0 -j MASQUERADE || true
       '';
     };
     firewall.enable = false;
