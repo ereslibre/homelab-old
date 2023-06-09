@@ -31,15 +31,11 @@
 
   networking = {
     hostName = "nuc-1";
-    nat = {
-      extraCommands = ''
-        ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -o tailscale0 -j MASQUERADE
-      '';
-      extraStopCommands = ''
-        ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -o tailscale0 -j MASQUERADE || true
-      '';
-    };
     firewall.enable = false;
+    nat = {
+      externalInterface = "tailscale0";
+      internalInterfaces = ["enp2s0"];
+    };
   };
 
   users = let
