@@ -37,6 +37,9 @@
   networking = {
     hostName = "nuc-2";
     firewall.enable = false;
+    nameservers = [
+      "10.0.4.1"
+    ];
   };
 
   users = let
