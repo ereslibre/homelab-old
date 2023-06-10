@@ -32,6 +32,9 @@
   networking = {
     hostName = "nuc-1";
     firewall.enable = false;
+    nameservers = [
+      "10.0.4.1"
+    ];
     nat = {
       externalInterface = "tailscale0";
       internalInterfaces = ["enp2s0"];
