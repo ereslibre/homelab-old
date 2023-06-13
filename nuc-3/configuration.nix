@@ -22,6 +22,9 @@
   networking = {
     hostName = "nuc-3";
     firewall.enable = false;
+    nameservers = [
+      "10.0.10.1"
+    ];
     nat = {
       externalInterface = "tailscale0";
       internalInterfaces = ["enp2s0"];
