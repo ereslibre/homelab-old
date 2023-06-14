@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  imports = [./hardware-configuration.nix ../common/linux-node/podman.nix];
+  imports = [./hardware-configuration.nix ../common/aliases ../common/podman];
 
   boot = {
     loader = {
@@ -61,6 +61,18 @@
 
   services = {
     fwupd.enable = true;
+    k3s = {
+      enable = true;
+      role = "server";
+      extraFlags = toString [
+        "--disable"
+        "traefik"
+        "--node-ip"
+        "10.0.10.10"
+        "--tls-san"
+        "nuc-3.ereslibre.net"
+      ];
+    };
     openssh = {
       enable = true;
       settings = {

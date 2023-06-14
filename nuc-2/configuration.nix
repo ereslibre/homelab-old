@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: {
-  imports = [./hardware-configuration.nix ../common/linux-node/podman.nix];
+  imports = [./hardware-configuration.nix ../common/aliases ../common/podman];
 
   sops.defaultSopsFile = ./secrets.yaml;
 
