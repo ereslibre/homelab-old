@@ -10,7 +10,7 @@
     kernel.sysctl."net.ipv4.ip_forward" = 1;
   };
 
-  environment.systemPackages = with pkgs; [k0s man-pages man-pages-posix];
+  environment.systemPackages = with pkgs; [k0sctl man-pages man-pages-posix];
 
   documentation = {
     dev.enable = true;
