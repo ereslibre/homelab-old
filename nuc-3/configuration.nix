@@ -10,7 +10,7 @@
     kernel.sysctl."net.ipv4.ip_forward" = 1;
   };
 
-  environment.systemPackages = with pkgs; [man-pages man-pages-posix];
+  environment.systemPackages = with pkgs; [kind man-pages man-pages-posix];
 
   documentation = {
     dev.enable = true;
@@ -61,18 +61,6 @@
 
   services = {
     fwupd.enable = true;
-    k3s = {
-      enable = true;
-      role = "server";
-      extraFlags = toString [
-        "--disable"
-        "traefik"
-        "--node-ip"
-        "10.0.10.10"
-        "--tls-san"
-        "nuc-3.ereslibre.net"
-      ];
-    };
     openssh = {
       enable = true;
       settings = {
