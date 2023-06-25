@@ -12,8 +12,8 @@
     "nvme"
     "usbhid"
   ];
-  boot.initrd.kernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
-  boot.kernelModules = [ "kernel-amd" ];
+  boot.initrd.kernelModules = ["xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod"];
+  boot.kernelModules = ["kernel-amd"];
   boot.extraModulePackages = [];
 
   fileSystems."/" = {
