@@ -51,12 +51,11 @@
         configurations;
     in {
       nixosConfigurations = mapMachineConfigurations {
-        "pi-desktop" = {
-          system = "aarch64-linux";
+        "hulk" = {
+          system = "x86_64-linux";
           user = "ereslibre";
           modules = [
-            ./pi-desktop/configuration.nix
-            nixos-hardware.nixosModules.raspberry-pi-4
+            ./hulk/configuration.nix
           ];
         };
         "nuc-1" = {
@@ -79,6 +78,14 @@
           system = "x86_64-linux";
           user = "ereslibre";
           modules = [./nuc-3/configuration.nix];
+        };
+        "pi-desktop" = {
+          system = "aarch64-linux";
+          user = "ereslibre";
+          modules = [
+            ./pi-desktop/configuration.nix
+            nixos-hardware.nixosModules.raspberry-pi-4
+          ];
         };
       };
     });
