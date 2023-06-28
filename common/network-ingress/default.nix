@@ -1,3 +1,6 @@
 {...}: {
-  networking.nat.externalInterface = "tailscale0";
+  networking.nat = {
+    enable = true;
+    externalInterface = "tailscale0";
+  };
 }
