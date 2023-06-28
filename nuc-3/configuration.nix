@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  imports = [./hardware-configuration.nix ../common/aliases ../common/kind ../common/network-ingress ../common/packages ../common/podman ../common/node ../common/office-node];
+  imports = [./hardware-configuration.nix ../common/aliases ../common/kind ../common/network-ingress ../common/packages ../common/podman ../common/node ../common/office-node ../common/tailscale];
 
   networking = {
     hostName = "nuc-3";
