@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   boot = {
     loader = {
       systemd-boot.enable = true;
@@ -13,7 +17,12 @@
     man.generateCaches = true;
   };
 
-  networking.firewall.enable = false;
+  networking = {
+    useDHCP = lib.mkDefault true;
+    firewall.enable = false;
+  };
+
+  powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
 
   users = let
     sshKeys = {
