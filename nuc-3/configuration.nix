@@ -1,17 +1,9 @@
 {pkgs, ...}: {
-  imports = [./hardware-configuration.nix ../common/aliases ../common/packages ../common/podman ../common/node];
-
-  environment.systemPackages = with pkgs; [kind];
+  imports = [./hardware-configuration.nix ../common/aliases ../common/kind ../common/network-ingress ../common/packages ../common/podman ../common/node ../common/office-node];
 
   networking = {
     hostName = "nuc-3";
-    nameservers = [
-      "10.0.10.1"
-    ];
-    nat = {
-      externalInterface = "tailscale0";
-      internalInterfaces = ["enp2s0"];
-    };
+    nat.internalInterfaces = ["enp2s0"];
   };
 
   # This value determines the NixOS release from which the default

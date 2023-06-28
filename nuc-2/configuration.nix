@@ -18,12 +18,7 @@
     "nohibernate"
   ];
 
-  networking = {
-    hostName = "nuc-2";
-    nameservers = [
-      "10.0.4.1"
-    ];
-  };
+  networking.hostName = "nuc-2";
 
   services.k3s = {
     enable = true;

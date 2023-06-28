@@ -1,14 +1,7 @@
 {pkgs, ...}: {
-  imports = [./hardware-configuration.nix ../common/aliases ../common/packages ../common/podman ../common/node];
+  imports = [./hardware-configuration.nix ../common/aliases ../common/home-node ../common/kind ../common/packages ../common/podman ../common/node];
 
-  environment.systemPackages = with pkgs; [kind];
-
-  networking = {
-    hostName = "hulk";
-    nameservers = [
-      "10.0.10.1"
-    ];
-  };
+  networking.hostName = "hulk";
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

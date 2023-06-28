@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: {
-  imports = [./hardware-configuration.nix ../common/aliases ../common/packages ../common/podman ../common/node];
+  imports = [./hardware-configuration.nix ../common/aliases ../common/network-ingress ../common/packages ../common/podman ../common/node];
 
   sops.defaultSopsFile = ./secrets.yaml;
 
@@ -13,13 +13,7 @@
 
   networking = {
     hostName = "nuc-1";
-    nameservers = [
-      "10.0.4.1"
-    ];
-    nat = {
-      externalInterface = "tailscale0";
-      internalInterfaces = ["enp2s0"];
-    };
+    nat.internalInterfaces = ["enp2s0"];
   };
 
   services.k3s = {
