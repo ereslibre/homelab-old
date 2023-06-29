@@ -1,5 +1,9 @@
 {pkgs, ...}: {
-  imports = [./hardware-configuration.nix ../common/aliases ../common/podman];
+  imports = [
+    ./hardware-configuration.nix
+    ../common/aliases
+    ../common/podman
+  ];
 
   boot = {
     loader = {

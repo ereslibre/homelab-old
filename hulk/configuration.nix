@@ -1,5 +1,15 @@
 {...}: {
-  imports = [./hardware-configuration.nix ../common/aliases ../common/home-node ../common/kind ../common/packages ../common/podman ../common/node ../common/tailscale];
+  imports = [
+    ./hardware-configuration.nix
+    ../common/aliases
+    ../common/home-node
+    ../common/kind
+    ../common/packages
+    ../common/podman
+    ../common/node
+    ../common/tailscale
+    ../common/vendor/amd
+  ];
 
   networking.hostName = "hulk";
 

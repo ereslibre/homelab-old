@@ -1,5 +1,13 @@
 {config, ...}: {
-  imports = [./hardware-configuration.nix ../common/aliases ../common/packages ../common/podman ../common/node ../common/tailscale];
+  imports = [
+    ./hardware-configuration.nix
+    ../common/aliases
+    ../common/packages
+    ../common/podman
+    ../common/node
+    ../common/tailscale
+    ../common/vendor/intel
+  ];
 
   sops.defaultSopsFile = ./secrets.yaml;
 
