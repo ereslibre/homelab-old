@@ -2,7 +2,6 @@
   imports = [
     ./hardware-configuration.nix
     ../common/aliases
-    ../common/kind
     ../common/network-ingress
     ../common/packages
     ../common/podman
