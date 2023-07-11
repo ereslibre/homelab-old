@@ -9,7 +9,7 @@
       availableKernelModules = [
         "xhci_pci"
         "ahci"
-        "nct6775"
+        "nct6775" # sensors
         "nvme"
         "usbhid"
       ];
