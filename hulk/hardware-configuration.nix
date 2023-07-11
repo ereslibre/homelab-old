@@ -9,10 +9,11 @@
       availableKernelModules = [
         "xhci_pci"
         "ahci"
+        "nct6775"
         "nvme"
         "usbhid"
       ];
-      kernelModules = ["xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod"];
+      kernelModules = ["xhci_pci" "ahci" "nct6775" "nvme" "usb_storage" "usbhid" "sd_mod"];
     };
     kernelModules = ["kernel-amd"];
     extraModulePackages = [];
