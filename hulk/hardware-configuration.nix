@@ -19,10 +19,16 @@
     extraModulePackages = [];
   };
 
+  environment.etc."sysconfig/lm_sensors".text = ''
+    HWMON_MODULES="nct6775"
+  '';
+
   fileSystems = {
     "/home" = {
       device = "/dev/disk/by-label/HOME";
       fsType = "ext4";
     };
   };
+
+  services.thermald.enable = true;
 }
