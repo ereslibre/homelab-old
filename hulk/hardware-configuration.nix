@@ -29,6 +29,4 @@
       fsType = "ext4";
     };
   };
-
-  services.thermald.enable = true;
 }
