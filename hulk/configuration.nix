@@ -10,6 +10,10 @@
     ../common/vendor/amd
   ];
 
+  environment.shellAliases = {
+    sensor-cpu = ''sudo sensors -j k10temp-pci-00c3 | jq '''."k10temp-pci-00c3".Tctl.temp1_input''''';
+  };
+
   networking.hostName = "hulk";
 
   # This value determines the NixOS release from which the default
