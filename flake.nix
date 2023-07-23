@@ -4,7 +4,6 @@
   inputs = {
     dotfiles.url = "github:ereslibre/dotfiles";
     flake-utils.url = "github:numtide/flake-utils";
-    nixos-hardware.url = "github:nixos/nixos-hardware";
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "dotfiles";
@@ -14,7 +13,6 @@
   outputs = {
     dotfiles,
     flake-utils,
-    nixos-hardware,
     sops-nix,
     ...
   }:
@@ -84,7 +82,6 @@
           user = "ereslibre";
           modules = [
             ./pi-desktop/configuration.nix
-            nixos-hardware.nixosModules.raspberry-pi-4
           ];
         };
       };
