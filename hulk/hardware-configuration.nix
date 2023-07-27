@@ -19,14 +19,31 @@
     extraModulePackages = [];
   };
 
-  environment.etc."sysconfig/lm_sensors".text = ''
-    HWMON_MODULES="nct6775"
-  '';
+  environment = {
+    etc."sysconfig/lm_sensors".text = ''
+      HWMON_MODULES="nct6775"
+    '';
+    shellAliases = {
+      sensor-cpu = "sudo ${pkgs.lm_sensors}/bin/sensors -j k10temp-pci-00c3 | ${pkgs.jq}/bin/jq '.\"k10temp-pci-00c3\".Tctl.temp1_input'";
+    };
+    systemPackages = with pkgs; [
+      cudatoolkit
+    ];
+  };
 
   fileSystems = {
     "/home" = {
       device = "/dev/disk/by-label/HOME";
       fsType = "ext4";
     };
+  };
+
+  nixpkgs.config.allowUnfree = true;
+
+  services.xserver.videoDrivers = ["nvidia"];
+
+  systemd.services.nvidia-control-devices = {
+    wantedBy = ["multi-user.target"];
+    serviceConfig.ExecStart = "${pkgs.linuxPackages.nvidia_x11.bin}/bin/nvidia-smi";
   };
 }
