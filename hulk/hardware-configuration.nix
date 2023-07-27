@@ -24,6 +24,10 @@
   };
 
   environment = {
+    variables = {
+      CUDA_PATH = pkgs.cudatoolkit;
+    };
+
     etc."sysconfig/lm_sensors".text = ''
       HWMON_MODULES="nct6775"
     '';
@@ -33,6 +37,7 @@
     systemPackages = with pkgs; [
       cudatoolkit
       linuxPackages.nvidia_x11
+      pciutils
     ];
   };
 
@@ -50,7 +55,12 @@
     };
   };
 
+  nixpkgs.config.allowUnfree = true;
+
   services.xserver.videoDrivers = ["nvidia"];
 
-  nixpkgs.config.allowUnfree = true;
+  systemd.services.nvidia-control-devices = {
+    wantedBy = ["multi-user.target"];
+    serviceConfig.ExecStart = "${pkgs.linuxPackages.nvidia_x11.bin}/bin/nvidia-smi";
+  };
 }
