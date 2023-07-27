@@ -1,4 +1,8 @@
-{modulesPath, ...}: {
+{
+  modulesPath,
+  pkgs,
+  ...
+}: {
   imports = [
     ../hardware-common/filesystems
     (modulesPath + "/installer/scan/not-detected.nix")
@@ -28,6 +32,7 @@
     };
     systemPackages = with pkgs; [
       cudatoolkit
+      linuxPackages.nvidia_x11
     ];
   };
 
@@ -38,12 +43,14 @@
     };
   };
 
-  nixpkgs.config.allowUnfree = true;
+  hardware = {
+    nvidia = {
+      modesetting.enable = true;
+      nvidiaPersistenced = true;
+    };
+  };
 
   services.xserver.videoDrivers = ["nvidia"];
 
-  systemd.services.nvidia-control-devices = {
-    wantedBy = ["multi-user.target"];
-    serviceConfig.ExecStart = "${pkgs.linuxPackages.nvidia_x11.bin}/bin/nvidia-smi";
-  };
+  nixpkgs.config.allowUnfree = true;
 }
