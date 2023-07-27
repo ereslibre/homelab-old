@@ -10,11 +10,25 @@
     ../common/vendor/amd
   ];
 
-  environment.shellAliases = {
-    sensor-cpu = "sudo ${pkgs.lm_sensors}/bin/sensors -j k10temp-pci-00c3 | ${pkgs.jq}/bin/jq '.\"k10temp-pci-00c3\".Tctl.temp1_input'";
+  nixpkgs.config.allowUnfree = true;
+
+  environment = {
+    shellAliases = {
+      sensor-cpu = "sudo ${pkgs.lm_sensors}/bin/sensors -j k10temp-pci-00c3 | ${pkgs.jq}/bin/jq '.\"k10temp-pci-00c3\".Tctl.temp1_input'";
+    };
+    systemPackages = with pkgs; [
+      cudatoolkit
+    ];
   };
 
   networking.hostName = "hulk";
+
+  systemd.services.nvidia-control-devices = {
+    wantedBy = ["multi-user.target"];
+    serviceConfig.ExecStart = "${pkgs.linuxPackages.nvidia_x11.bin}/bin/nvidia-smi";
+  };
+
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
