@@ -1,4 +1,5 @@
 {
+  config,
   modulesPath,
   pkgs,
   ...
@@ -63,4 +64,6 @@
     wantedBy = ["multi-user.target"];
     serviceConfig.ExecStart = "${pkgs.linuxPackages.nvidia_x11.bin}/bin/nvidia-smi";
   };
+
+  virtualisation.podman.enableNvidia = config.virtualisation.podman.enable;
 }
