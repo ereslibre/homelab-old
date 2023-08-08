@@ -3,7 +3,6 @@
 
   inputs = {
     dotfiles.url = "github:ereslibre/dotfiles";
-    flake-utils.url = "github:numtide/flake-utils";
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "dotfiles";
@@ -12,11 +11,9 @@
 
   outputs = {
     dotfiles,
-    flake-utils,
     sops-nix,
     ...
-  }:
-    flake-utils.lib.eachDefaultSystem (system: let
+  }: (dotfiles.flake-utils.lib.eachDefaultSystem (system: let
       pkgs = dotfiles.nixpkgs.legacyPackages.${system};
     in {
       devShells.default = pkgs.mkShell {
@@ -85,5 +82,5 @@
           ];
         };
       };
-    });
+    }));
 }
