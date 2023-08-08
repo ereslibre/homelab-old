@@ -13,7 +13,8 @@
     dotfiles,
     sops-nix,
     ...
-  }: (dotfiles.flake-utils.lib.eachDefaultSystem (system: let
+  }:
+    dotfiles.flake-utils.lib.eachDefaultSystem (system: let
       pkgs = dotfiles.nixpkgs.legacyPackages.${system};
     in {
       devShells.default = pkgs.mkShell {
@@ -82,5 +83,5 @@
           ];
         };
       };
-    }));
+    });
 }
