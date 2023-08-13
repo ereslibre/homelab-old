@@ -24,26 +24,25 @@
     // (let
       mapMachineConfigurations = configurations:
         dotfiles.nixpkgs.lib.attrsets.mapAttrs (host: configuration:
-          dotfiles.nixpkgs.lib.nixosSystem {
-            inherit (configuration) system;
-            modules =
-              configuration.modules
-              ++ (let
-                hmConfig = user: host:
-                  (import "${dotfiles}/hm-configurations.nix" {
-                    inherit (dotfiles) devenv home-manager nixpkgs;
-                  })
-                  ."${user}@${host}"
-                  .rawConfig;
-              in [
-                dotfiles.home-manager.nixosModules.home-manager
-                {
-                  home-manager.extraSpecialArgs =
-                    (hmConfig configuration.user host).extraSpecialArgs;
-                  home-manager.users.${configuration.user} = {imports = (hmConfig configuration.user host).modules;};
-                }
-              ]);
-          })
+          dotfiles.nixpkgs.lib.nixosSystem (
+            let
+              hmConfiguration = dotfiles.homeManagerConfigurations."${configuration.user}@${host}";
+            in {
+              inherit (configuration) system;
+              modules =
+                configuration.modules
+                ++ [
+                  dotfiles.home-manager.nixosModules.home-manager
+                  {
+                    home-manager.users.${configuration.user} = import "${dotfiles}/home.nix" {
+                      pkgs = dotfiles.nixpkgs.legacyPackages.${configuration.system};
+                      inherit (dotfiles) devenv home-manager nixpkgs;
+                      inherit (hmConfiguration) username homeDirectory stateVersion profile;
+                    };
+                  }
+                ];
+            }
+          ))
         configurations;
     in {
       nixosConfigurations = mapMachineConfigurations {
