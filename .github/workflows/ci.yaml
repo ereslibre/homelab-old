@@ -28,6 +28,7 @@ jobs:
         uses: DeterminateSystems/flake-checker-action@v5
         with:
           nixpkgs-keys: dotfiles
+          check-owner: false
   build:
     name: Build
     strategy:
