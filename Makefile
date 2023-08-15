@@ -6,7 +6,7 @@ switch:
 
 .PHONY: build
 build:
-	nix build '.#nixosConfigurations.${ACTIVATION_HOST}.config.system.build.toplevel'
+	sudo nixos-rebuild --flake '.#${ACTIVATION_HOST}' build
 
 .PHONY: fmt
 fmt:
