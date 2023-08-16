@@ -31,7 +31,7 @@
       mapMachineConfigurations = dotfiles.nixpkgs.lib.mapAttrs (host: configuration:
         dotfiles.nixpkgs.lib.nixosSystem (
           let
-            hmConfiguration = dotfiles.homeManagerConfigurations."${configuration.user}@${host}";
+            hmConfiguration = dotfiles.rawHomeManagerConfigurations."${configuration.user}@${host}";
           in {
             inherit (configuration) system;
             modules =
