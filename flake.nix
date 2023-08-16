@@ -14,6 +14,7 @@
   };
 
   outputs = {
+    self,
     dotfiles,
     microvm,
     sops-nix,
