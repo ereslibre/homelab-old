@@ -27,28 +27,26 @@
       };
     })
     // (let
-      mapMachineConfigurations = configurations:
-        dotfiles.nixpkgs.lib.attrsets.mapAttrs (host: configuration:
-          dotfiles.nixpkgs.lib.nixosSystem (
-            let
-              hmConfiguration = dotfiles.homeManagerConfigurations."${configuration.user}@${host}";
-            in {
-              inherit (configuration) system;
-              modules =
-                configuration.modules
-                ++ [
-                  dotfiles.home-manager.nixosModules.home-manager
-                  {
-                    home-manager.users.${configuration.user} = import "${dotfiles}/home.nix" {
-                      pkgs = dotfiles.nixpkgs.legacyPackages.${configuration.system};
-                      inherit (dotfiles) devenv home-manager nixpkgs;
-                      inherit (hmConfiguration) username homeDirectory stateVersion profile;
-                    };
-                  }
-                ];
-            }
-          ))
-        configurations;
+      mapMachineConfigurations = dotfiles.nixpkgs.lib.mapAttrs (host: configuration:
+        dotfiles.nixpkgs.lib.nixosSystem (
+          let
+            hmConfiguration = dotfiles.homeManagerConfigurations."${configuration.user}@${host}";
+          in {
+            inherit (configuration) system;
+            modules =
+              configuration.modules
+              ++ [
+                dotfiles.home-manager.nixosModules.home-manager
+                {
+                  home-manager.users.${configuration.user} = import "${dotfiles}/home.nix" {
+                    pkgs = dotfiles.nixpkgs.legacyPackages.${configuration.system};
+                    inherit (dotfiles) devenv home-manager nixpkgs;
+                    inherit (hmConfiguration) username homeDirectory stateVersion profile;
+                  };
+                }
+              ];
+          }
+        ));
     in {
       nixosConfigurations = mapMachineConfigurations {
         "hulk" = {
