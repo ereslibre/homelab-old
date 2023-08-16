@@ -3,6 +3,10 @@
 
   inputs = {
     dotfiles.url = "github:ereslibre/dotfiles";
+    microvm = {
+      url = "github:astro/microvm.nix";
+      inputs.nixpkgs.follows = "dotfiles";
+    };
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "dotfiles";
@@ -11,6 +15,7 @@
 
   outputs = {
     dotfiles,
+    microvm,
     sops-nix,
     ...
   }:
@@ -50,6 +55,7 @@
           system = "x86_64-linux";
           user = "ereslibre";
           modules = [
+            microvm.nixosModules.host
             ./hulk/configuration.nix
           ];
         };
