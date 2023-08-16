@@ -62,6 +62,7 @@
           user = "ereslibre";
           modules = [
             sops-nix.nixosModules.sops
+            microvm.nixosModules.host
             ./nuc-1/configuration.nix
           ];
         };
@@ -70,13 +71,17 @@
           user = "ereslibre";
           modules = [
             sops-nix.nixosModules.sops
+            microvm.nixosModules.host
             ./nuc-2/configuration.nix
           ];
         };
         "nuc-3" = {
           system = "x86_64-linux";
           user = "ereslibre";
-          modules = [./nuc-3/configuration.nix];
+          modules = [
+            microvm.nixosModules.host
+            ./nuc-3/configuration.nix
+          ];
         };
         "pi-desktop" = {
           system = "aarch64-linux";
