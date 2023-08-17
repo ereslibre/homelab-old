@@ -62,8 +62,8 @@
           system = "x86_64-linux";
           user = "ereslibre";
           modules = [
-            sops-nix.nixosModules.sops
             microvm.nixosModules.host
+            sops-nix.nixosModules.sops
             ./nuc-1/configuration.nix
           ];
         };
@@ -71,8 +71,8 @@
           system = "x86_64-linux";
           user = "ereslibre";
           modules = [
-            sops-nix.nixosModules.sops
             microvm.nixosModules.host
+            sops-nix.nixosModules.sops
             ./nuc-2/configuration.nix
           ];
         };
