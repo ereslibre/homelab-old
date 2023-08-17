@@ -1,13 +1,16 @@
-{pkgs, ...}: {
+{microvm, ...}: {
   imports = [
     ./hardware-configuration.nix
     ../common/aliases
     ../common/network-ingress
-    ../common/packages
-    ../common/podman
     ../common/node
     ../common/office-node
+    ../common/packages
+    ../common/podman
+    ../common/programs
+    ../common/services
     ../common/tailscale
+    ../common/users
     ../common/vendor/intel
   ];
 

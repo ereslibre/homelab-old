@@ -1,12 +1,15 @@
-{pkgs, ...}: {
+{...}: {
   imports = [
     ./hardware-configuration.nix
     ../common/aliases
     ../common/home-node
+    ../common/node
     ../common/packages
     ../common/podman
-    ../common/node
+    ../common/programs
+    ../common/services
     ../common/tailscale
+    ../common/users
     ../common/vendor/amd
   ];
 
