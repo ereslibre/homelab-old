@@ -19,17 +19,20 @@
     microvm,
     sops-nix,
     ...
-  }:
-    dotfiles.flake-utils.lib.eachDefaultSystem (system: let
-      pkgs = dotfiles.nixpkgs.legacyPackages.${system};
+  }: let
+    flake-utils = dotfiles.flake-utils;
+    home-manager = dotfiles.home-manager;
+    nixpkgs = dotfiles.nixpkgs;
+  in (flake-utils.lib.eachDefaultSystem (system: let
+      pkgs = nixpkgs.legacyPackages.${system};
     in {
       devShells.default = pkgs.mkShell {
         buildInputs = with pkgs; [age alejandra sops];
       };
     })
     // (let
-      mapMachineConfigurations = dotfiles.nixpkgs.lib.mapAttrs (host: configuration:
-        dotfiles.nixpkgs.lib.nixosSystem (
+      mapMachineConfigurations = nixpkgs.lib.mapAttrs (host: configuration:
+        nixpkgs.lib.nixosSystem (
           let
             hmConfiguration = dotfiles.rawHomeManagerConfigurations."${configuration.user}@${host}";
           in {
@@ -37,10 +40,10 @@
             modules =
               configuration.modules
               ++ [
-                dotfiles.home-manager.nixosModules.home-manager
+                home-manager.nixosModules.home-manager
                 {
                   home-manager.users.${configuration.user} = import "${dotfiles}/home.nix" {
-                    pkgs = dotfiles.nixpkgs.legacyPackages.${configuration.system};
+                    pkgs = nixpkgs.legacyPackages.${configuration.system};
                     inherit (dotfiles) devenv home-manager nixpkgs;
                     inherit (hmConfiguration) username homeDirectory stateVersion profile;
                   };
@@ -92,5 +95,5 @@
           ];
         };
       };
-    });
+    }));
 }
