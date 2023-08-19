@@ -7,6 +7,7 @@
       url = "github:astro/microvm.nix";
       inputs.nixpkgs.follows = "dotfiles";
     };
+    nixos-hardware.url = "github:NixOs/nixos-hardware";
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "dotfiles";
@@ -17,6 +18,7 @@
     self,
     dotfiles,
     microvm,
+    nixos-hardware,
     sops-nix,
     ...
   }: let
@@ -91,6 +93,7 @@
           system = "aarch64-linux";
           user = "ereslibre";
           modules = [
+            nixos-hardware.nixosModules.raspberry-pi-4
             ./pi-desktop/configuration.nix
           ];
         };
