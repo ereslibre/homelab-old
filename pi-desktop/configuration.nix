@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   imports = [
     ./hardware-configuration.nix
     ../common/aliases
@@ -19,6 +19,8 @@
     };
     kernelParams = ["nohibernate"];
   };
+
+  environment.systemPackages = with pkgs; [firefox];
 
   networking = {
     hostName = "pi-desktop";
