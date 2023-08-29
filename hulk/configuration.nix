@@ -3,6 +3,7 @@
     ./hardware-configuration.nix
     ../common/aliases
     ../common/home-node
+    ../common/networking
     ../common/node
     ../common/packages
     ../common/podman

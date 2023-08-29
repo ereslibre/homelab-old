@@ -2,6 +2,7 @@
   imports = [
     ./hardware-configuration.nix
     ../common/aliases
+    ../common/networking
     ../common/node
     ../common/packages
     ../common/podman
