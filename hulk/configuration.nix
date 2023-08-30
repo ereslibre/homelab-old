@@ -16,6 +16,10 @@
 
   networking.hostName = "hulk";
 
+  # Enable containerd service to allow containerd-thirsty projects to
+  # work as expected by using the `ctr` CLI tool just fine.
+  virtualisation.containerd.enable = true;
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
