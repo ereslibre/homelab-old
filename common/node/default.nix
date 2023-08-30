@@ -31,4 +31,7 @@
   };
 
   time.timeZone = "Europe/Madrid";
+
+  users.users.ereslibre.extraGroups = ["libvirtd"];
+  virtualisation.libvirtd.enable = true;
 }
