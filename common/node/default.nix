@@ -13,6 +13,10 @@
     man.generateCaches = true;
   };
 
+  environment.sessionVariables = {
+    LIBVIRT_DEFAULT_URI = "qemu:///system";
+  };
+
   networking = {
     useDHCP = lib.mkDefault true;
     firewall.enable = false;
