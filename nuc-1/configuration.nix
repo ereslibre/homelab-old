@@ -2,6 +2,7 @@
   imports = [
     ./hardware-configuration.nix
     ../common/aliases
+    ../common/home-node
     ../common/network-ingress
     ../common/networking
     ../common/node
