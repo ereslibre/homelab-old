@@ -2,10 +2,8 @@
   imports = [
     ./hardware-configuration.nix
     ../common/aliases
-    ../common/network-ingress
     ../common/networking
     ../common/node
-    ../common/office-node
     ../common/packages
     ../common/podman
     ../common/programs
