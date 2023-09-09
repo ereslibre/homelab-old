@@ -1,4 +1,4 @@
-{microvm, ...}: {
+{...}: {
   imports = [
     ./hardware-configuration.nix
     ../common/aliases
@@ -14,10 +14,7 @@
     ../common/vendor/intel
   ];
 
-  networking = {
-    hostName = "nuc-3";
-    nat.internalInterfaces = ["enp2s0"];
-  };
+  networking.hostName = "nuc-3";
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
