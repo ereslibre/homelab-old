@@ -29,5 +29,5 @@
 ### nuc-3
 
 ```
-# sudo tailscale up --accept-dns=false --accept-routes=false --advertise-routes=10.0.10.0/24
+# sudo tailscale up --accept-dns=false --accept-routes
 ```
