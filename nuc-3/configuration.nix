@@ -4,6 +4,7 @@
     ../common/aliases
     ../common/home-node
     ../common/networking
+    ../common/nixos
     ../common/node
     ../common/packages
     ../common/podman
