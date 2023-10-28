@@ -30,11 +30,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1698384641,
-        "narHash": "sha256-Yep3mEn1WvCALdclTCGh9ombxZ80Gp9a5q6Ioh3Cq4E=",
+        "lastModified": 1698443434,
+        "narHash": "sha256-1N86HkruqFILQLoS8vWvUFzXojlzx3YnfNcqWHKxizs=",
         "owner": "ereslibre",
         "repo": "dotfiles",
-        "rev": "3356598a6370bd2ac5c374884336c916ea89c363",
+        "rev": "7080c7bbedaab387b9676457b5a72a42a320ffab",
         "type": "github"
       },
       "original": {
