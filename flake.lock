@@ -30,11 +30,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1698902359,
-        "narHash": "sha256-2ZhdTzVqLjt4IK5DWkguAyJvdng7WjRefEZhmTbSS9o=",
+        "lastModified": 1698965743,
+        "narHash": "sha256-EbBX0YwzvAsbawMKJB05wS5Wsy2TjIkMnZgYxgCmz3A=",
         "owner": "ereslibre",
         "repo": "dotfiles",
-        "rev": "35f74424244fd035eab37ad4890beb327253b41d",
+        "rev": "461355ead49a692cefc96a6240eb2be6c2af8984",
         "type": "github"
       },
       "original": {
@@ -179,11 +179,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1698882985,
-        "narHash": "sha256-0of8RrrfQGco9kiLW4vXpI8n4aGFRp+sPdCWKkkN8XY=",
+        "lastModified": 1698964702,
+        "narHash": "sha256-0ouAgFXWN6BhhSFydpUP79Uf6C8QisDHJ+F+Fwnu3+M=",
         "owner": "astro",
         "repo": "microvm.nix",
-        "rev": "402333c6e461e0af422e305eb680b4ea9d973b06",
+        "rev": "d07c3efd42a93d576da2ba6569818b6edb0cbe18",
         "type": "github"
       },
       "original": {
@@ -358,11 +358,11 @@
         "nixpkgs-stable": "nixpkgs-stable_2"
       },
       "locked": {
-        "lastModified": 1698548647,
-        "narHash": "sha256-7c03OjBGqnwDW0FBaBc+NjfEBxMkza+dxZGJPyIzfFE=",
+        "lastModified": 1698929376,
+        "narHash": "sha256-TmROaV9W6HArdTUgxLN334Kw+CradxWHw1HYM/3H6xI=",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "632c3161a6cc24142c8e3f5529f5d81042571165",
+        "rev": "84d6b27dc71ac02422e192c35806d06915d2bf67",
         "type": "github"
       },
       "original": {
