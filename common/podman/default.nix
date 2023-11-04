@@ -5,6 +5,7 @@
     };
     systemPackages = with pkgs; [
       conmon
+      podman-compose
     ];
   };
   security.polkit.enable = true;
