@@ -3,6 +3,9 @@
     sessionVariables = {
       DOCKER_HOST = "unix:///run/podman/podman.sock";
     };
+    shellAliases = {
+      docker-compose = "podman-compose";
+    };
     systemPackages = with pkgs; [
       conmon
       podman-compose
@@ -13,6 +16,6 @@
   virtualisation.podman = {
     enable = true;
     dockerCompat = true;
-    dockerSocket = true;
+    dockerSocket.enable = true;
   };
 }
