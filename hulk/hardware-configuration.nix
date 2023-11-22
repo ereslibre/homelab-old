@@ -56,7 +56,10 @@
     opengl.enable = true;
   };
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    cudaSupport = true;
+  };
 
   services.xserver.videoDrivers = ["nvidia"];
 
