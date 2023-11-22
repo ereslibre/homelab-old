@@ -13,9 +13,12 @@
   };
   security.polkit.enable = true;
   users.users.ereslibre.extraGroups = ["podman"];
-  virtualisation.podman = {
-    enable = true;
-    dockerCompat = true;
-    dockerSocket.enable = true;
+  virtualisation = {
+    containers.enable = true;
+    podman = {
+      enable = true;
+      dockerCompat = true;
+      dockerSocket.enable = true;
+    };
   };
 }
