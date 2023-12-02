@@ -9,16 +9,9 @@
     ../common/users
   ];
 
-  boot = {
-    loader = {
-      grub.enable = false;
-      generic-extlinux-compatible.enable = false;
-      raspberryPi = {
-        enable = true;
-        version = 4;
-      };
-    };
-    kernelParams = ["nohibernate"];
+  boot.loader = {
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
   };
 
   environment.systemPackages = with pkgs; [firefox];
