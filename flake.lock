@@ -30,11 +30,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1701754205,
-        "narHash": "sha256-EWZ9F11KEjiKgA4y/ODjo/C+9YBTVNjws9VIEtSe1mg=",
+        "lastModified": 1701839941,
+        "narHash": "sha256-x1CKUOeMe1eMf1IYSVOKz0Ha4M6Ux7zfZrA6JjUaBlY=",
         "owner": "ereslibre",
         "repo": "dotfiles",
-        "rev": "edd70d78540763bcf7e50587fd663cb596ec1464",
+        "rev": "1c01413167cbe5905d525839d547d2f9b30ce6d7",
         "type": "github"
       },
       "original": {
@@ -298,16 +298,16 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1701539137,
-        "narHash": "sha256-nVO/5QYpf1GwjvtpXhyxx5M3U/WN0MwBro4Lsk+9mL0=",
+        "lastModified": 1701832761,
+        "narHash": "sha256-bf+sHj9IvL7gOTkY1ZXRQSJCDQcxTKgAeCO/ZxO2qbc=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "933d7dc155096e7575d207be6fb7792bc9f34f6d",
+        "rev": "f2843282893b79bf0ef747f4c75f958af08608d9",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "nixos-23.11",
+        "ref": "release-23.11",
         "repo": "nixpkgs",
         "type": "github"
       }
