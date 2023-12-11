@@ -13,7 +13,6 @@
     ../common/tailscale
     ../common/users
     ../common/vendor/amd
-    ../common/vscode
   ];
 
   networking.hostName = "hulk";

@@ -13,7 +13,6 @@
     ../common/tailscale
     ../common/users
     ../common/vendor/intel
-    ../common/vscode
   ];
 
   networking.hostName = "nuc-3";
