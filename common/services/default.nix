@@ -1,4 +1,4 @@
-{...}: {
+{
   services = {
     fwupd.enable = true;
     openssh = {
