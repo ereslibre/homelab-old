@@ -179,11 +179,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1702284758,
-        "narHash": "sha256-lId/Q7iSmsIwVZkJZqfDhLnT0AnbQkROY3NrgPiu7ac=",
+        "lastModified": 1702607241,
+        "narHash": "sha256-+farSP+jVeLssxkSTS+bH60F+6CZATEA64sbmyZtq2E=",
         "owner": "astro",
         "repo": "microvm.nix",
-        "rev": "252d7153e6faab321f012d9a0c6e290f888b8d0f",
+        "rev": "67d28f368ee387bc9e4cfbf89780ccc31643bbed",
         "type": "github"
       },
       "original": {
