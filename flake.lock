@@ -30,11 +30,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1703654462,
-        "narHash": "sha256-iztopkFCsG9Q7X0GjbTG/2E4DDxYbKg2OVEpAaa3CNY=",
+        "lastModified": 1703779029,
+        "narHash": "sha256-JK4dfT4BO9Qwf6mKfduRco+rfMhr+w8660WTKPtYyU8=",
         "owner": "ereslibre",
         "repo": "dotfiles",
-        "rev": "05ba0233965532498431c5f03c136ab48c619cc1",
+        "rev": "896ac2e7c0379d968cc97e61841ea16ca9cc78e7",
         "type": "github"
       },
       "original": {
@@ -180,11 +180,11 @@
         "spectrum": "spectrum"
       },
       "locked": {
-        "lastModified": 1703725854,
-        "narHash": "sha256-xFhd5XaLgZiwfiVhPw0gYEpaxiE8l8Or+pvAnxfSUWU=",
+        "lastModified": 1703769051,
+        "narHash": "sha256-izOj8XRoHUXkWHpxznOaYHpj30J8/f3ynr7H6oYcNho=",
         "owner": "astro",
         "repo": "microvm.nix",
-        "rev": "17e7f0682378e77e0ed0ab5796260bd3beb9d513",
+        "rev": "c39a472523d3c99ddfa88df62223a21b19793490",
         "type": "github"
       },
       "original": {
