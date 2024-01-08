@@ -1,8 +1,5 @@
 {pkgs, ...}: {
   environment = {
-    sessionVariables = {
-      DOCKER_HOST = "unix:///run/podman/podman.sock";
-    };
     shellAliases = {
       docker-compose = "podman-compose";
     };
