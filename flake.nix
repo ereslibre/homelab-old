@@ -47,7 +47,7 @@
                   home-manager.users.${configuration.user} = import "${dotfiles}/home.nix" {
                     pkgs = nixpkgs.legacyPackages.${configuration.system};
                     inherit (dotfiles) devenv home-manager nixpkgs;
-                    inherit (hmConfiguration) username homeDirectory stateVersion profile;
+                    inherit (hmConfiguration) username homeDirectory stateVersion profile mainlyRemote;
                   };
                 }
               ];
