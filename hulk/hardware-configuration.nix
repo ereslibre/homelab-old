@@ -69,5 +69,5 @@
     serviceConfig.ExecStart = "${pkgs.linuxPackages.nvidia_x11.bin}/bin/nvidia-smi";
   };
 
-  virtualisation.podman.enableNvidia = true;
+  virtualisation.containers.cdi.dynamic.nvidia.enable = true;
 }
