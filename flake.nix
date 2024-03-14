@@ -43,6 +43,7 @@
               configuration.modules
               ++ [
                 home-manager.nixosModules.home-manager
+                {nixpkgs.config.allowUnfree = true;}
                 {
                   home-manager.users.${configuration.user} = import "${dotfiles}/home.nix" {
                     inherit (dotfiles) devenv home-manager;
