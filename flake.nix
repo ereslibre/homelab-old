@@ -42,12 +42,15 @@
             modules =
               configuration.modules
               ++ [
-                home-manager.nixosModules.home-manager
                 {nixpkgs.config.allowUnfree = true;}
+                home-manager.nixosModules.home-manager
                 {
-                  home-manager.users.${configuration.user} = import "${dotfiles}/home.nix" {
-                    inherit (dotfiles) devenv home-manager;
-                    inherit (hmConfiguration) system username homeDirectory stateVersion profile mainlyRemote;
+                  home-manager = {
+                    users.${configuration.user} = import "${dotfiles}/home.nix" {
+                      inherit (dotfiles) devenv home-manager;
+                      inherit (hmConfiguration) system username homeDirectory stateVersion profile mainlyRemote;
+                    };
+                    useGlobalPkgs = true;
                   };
                 }
               ];
