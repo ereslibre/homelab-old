@@ -45,9 +45,8 @@
                 home-manager.nixosModules.home-manager
                 {
                   home-manager.users.${configuration.user} = import "${dotfiles}/home.nix" {
-                    pkgs = nixpkgs.legacyPackages.${configuration.system};
-                    inherit (dotfiles) devenv home-manager nixpkgs;
-                    inherit (hmConfiguration) username homeDirectory stateVersion profile mainlyRemote;
+                    inherit (dotfiles) devenv home-manager;
+                    inherit (hmConfiguration) system username homeDirectory stateVersion profile mainlyRemote;
                   };
                 }
               ];
