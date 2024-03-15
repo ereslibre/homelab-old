@@ -12,11 +12,7 @@
   boot = {
     loader = {
       grub.enable = false;
-      generic-extlinux-compatible.enable = false;
-      raspberryPi = {
-        enable = true;
-        version = 4;
-      };
+      generic-extlinux-compatible.enable = true;
     };
     kernelParams = ["nohibernate"];
   };
