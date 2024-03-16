@@ -25,10 +25,6 @@
   };
 
   environment = {
-    variables = {
-      LD_LIBRARY_PATH = "${pkgs.linuxPackages.nvidia_x11}/lib";
-    };
-
     etc."sysconfig/lm_sensors".text = ''
       HWMON_MODULES="nct6775"
     '';
@@ -68,8 +64,5 @@
     serviceConfig.ExecStart = "${pkgs.linuxPackages.nvidia_x11.bin}/bin/nvidia-smi";
   };
 
-  virtualisation.containers.cdi.dynamic.nvidia = {
-    enable = true;
-    mount-nvidia-1-directories = true;
-  };
+  virtualisation.containers.cdi.dynamic.nvidia.enable = true;
 }
