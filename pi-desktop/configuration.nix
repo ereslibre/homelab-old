@@ -2,6 +2,7 @@
   imports = [
     ./hardware-configuration.nix
     ../common/aliases
+    ../common/fonts
     ../common/nixos
     ../common/podman
     ../common/programs
