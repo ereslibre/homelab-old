@@ -4,7 +4,6 @@
     ../common/aliases
     ../common/home-node
     ../common/network-ingress
-    ../common/networking
     ../common/nixos
     ../common/node
     ../common/packages
