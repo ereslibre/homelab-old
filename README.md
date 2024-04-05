@@ -23,11 +23,11 @@
 ### nuc-2
 
 ```
-# sudo tailscale up
+# sudo tailscale up --accept-dns=false
 ```
 
 ### nuc-3
 
 ```
-# sudo tailscale up
+# sudo tailscale up --accept-dns=false
 ```
