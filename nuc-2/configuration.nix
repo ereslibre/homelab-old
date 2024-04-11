@@ -2,6 +2,7 @@
   imports = [
     ./hardware-configuration.nix
     ../common/aliases
+    ../common/mdns-reflector
     ../common/home-node
     ../common/nixos
     ../common/node
