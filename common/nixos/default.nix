@@ -6,6 +6,6 @@
       dates = "weekly";
       options = "--delete-older-than 30d";
     };
-    settings.trusted-users = [ "root" "ereslibre" ];
+    settings.trusted-users = ["root" "ereslibre"];
   };
 }
