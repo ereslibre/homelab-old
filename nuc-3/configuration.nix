@@ -17,7 +17,7 @@
 
   networking.hostName = "nuc-3";
 
-  users.users.ereslibre.extraGroups = ["video"];
+  users.users.ereslibre.extraGroups = ["video"]; # surpillance experiments
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
