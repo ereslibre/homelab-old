@@ -1,9 +1,16 @@
+{ config, ... }:
 {
+  sops.secrets.nixos-builder-key = {
+    mode = "0400";
+    owner = config.users.users.ereslibre.name;
+    group = config.users.users.ereslibre.group;
+  };
+
   nix = {
     buildMachines = [
       {
         sshUser = "ereslibre";
-        sshKey = "/home/ereslibre/.ssh/nixos-builder";
+        sshKey = config.sops.secrets.nixos-builder-key.path;
         hostName = "hulk";
         systems = ["x86_64-linux" "aarch64-linux"];
         protocol = "ssh-ng";
