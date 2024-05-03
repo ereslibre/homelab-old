@@ -1,5 +1,6 @@
 {
   nix = {
+    distributedBuilds = true;
     extraOptions = "experimental-features = nix-command flakes";
     gc = {
       automatic = true;
