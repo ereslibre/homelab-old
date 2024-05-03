@@ -1,5 +1,4 @@
-{ config, ... }:
-{
+{config, ...}: {
   sops.secrets.nixos-builder-key = {
     mode = "0400";
     owner = config.users.users.ereslibre.name;
