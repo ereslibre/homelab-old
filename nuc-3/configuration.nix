@@ -8,6 +8,7 @@
     ../common/packages
     ../common/podman
     ../common/programs
+    ../common/remote-builds
     ../common/services
     ../common/tailscale
     ../common/users

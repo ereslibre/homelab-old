@@ -5,6 +5,7 @@
     ../common/nixos
     ../common/podman
     ../common/programs
+    ../common/remote-builds
     ../common/services
     ../common/users
   ];

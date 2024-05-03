@@ -16,6 +16,12 @@
 
   networking.hostName = "hulk";
 
+  # Nix remote builder
+  users.users.ereslibre.openssh.authorizedKeys.keys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPgXdZGKpuMlgyDqjUt38Yb0fdkEqMWhSdWKvzFDJG4M"
+  ];
+  nix.settings.trusted-users = ["ereslibre"];
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
