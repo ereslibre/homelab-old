@@ -14,3 +14,8 @@ creation_rules:
       - age:
           - *ereslibre
           - *host-nuc-2
+  - path_regex: nuc-3/secrets\.yaml$
+    key_groups:
+      - age:
+          - *ereslibre
+          - *host-nuc-3
