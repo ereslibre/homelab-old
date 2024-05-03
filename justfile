@@ -9,6 +9,9 @@ build host=defaultHost:
 fmt:
   find . -name "*.nix" | xargs nix develop --command alejandra
 
+age-gen host=defaultHost:
+  ssh-keyscan {{host}} | nix run github:Mic92/ssh-to-age
+
 gen-age-pub host=defaultHost:
   ssh-keyscan -t ed25519 {{host}} | nix run nixpkgs#ssh-to-age
 
