@@ -16,6 +16,8 @@
     ../common/vscode-server
   ];
 
+  sops.defaultSopsFile = ./secrets.yaml;
+
   networking.hostName = "nuc-3";
 
   users.users.ereslibre.extraGroups = ["video"]; # surpillance experiments

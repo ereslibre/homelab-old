@@ -89,6 +89,7 @@
           user = "ereslibre";
           modules = [
             microvm.nixosModules.host
+            sops-nix.nixosModules.sops
             ./nuc-3/configuration.nix
           ];
         };
@@ -97,6 +98,7 @@
           user = "ereslibre";
           modules = [
             nixos-hardware.nixosModules.raspberry-pi-4
+            sops-nix.nixosModules.sops
             ./pi-desktop/configuration.nix
           ];
         };
