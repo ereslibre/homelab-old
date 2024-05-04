@@ -1,9 +1,5 @@
 {config, ...}: {
-  sops.secrets.hulk-builder-key = {
-    mode = "0400";
-    owner = config.users.users.ereslibre.name;
-    group = config.users.users.ereslibre.group;
-  };
+  sops.secrets.hulk-builder-key.mode = "0400";
 
   nix = {
     buildMachines = [
