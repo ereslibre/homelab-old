@@ -9,7 +9,7 @@
     buildMachines = [
       {
         sshUser = "ereslibre";
-        sshKey = config.sops.secrets.nixos-builder-key.path;
+        sshKey = config.sops.secrets.hulk-builder-key.path;
         hostName = "hulk";
         systems = ["x86_64-linux" "aarch64-linux"];
         protocol = "ssh-ng";
