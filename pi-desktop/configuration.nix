@@ -10,6 +10,9 @@
     ../common/users
   ];
 
+
+  sops.defaultSopsFile = ./secrets.yaml;
+
   boot = {
     loader = {
       grub.enable = false;
