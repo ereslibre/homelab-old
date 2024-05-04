@@ -86,11 +86,11 @@
         "spectrum": "spectrum"
       },
       "locked": {
-        "lastModified": 1714657010,
-        "narHash": "sha256-GQgE4mxa17a17W0UFU1SGH7DTNYUE9ApurCdVv+sO5Q=",
+        "lastModified": 1714764302,
+        "narHash": "sha256-MmIZR67wOP3Nr9b3XpsvHSZSTDcTmd9cQn2Z8pW1/Hw=",
         "owner": "astro",
         "repo": "microvm.nix",
-        "rev": "6ae715eb1590cbe945222ac25d93505981583eeb",
+        "rev": "e9977efbe34b554c3e393dc9a18509905a4080e5",
         "type": "github"
       },
       "original": {
@@ -101,11 +101,11 @@
     },
     "nixos-hardware": {
       "locked": {
-        "lastModified": 1714465198,
-        "narHash": "sha256-ySkEJvS0gPz2UhXm0H3P181T8fUxvDVcoUyGn0Kc5AI=",
+        "lastModified": 1714746424,
+        "narHash": "sha256-Jdyw7VcM+jQ0uSXgjFj8UdXZ229yOvPNlYkKyKyHA4s=",
         "owner": "NixOS",
         "repo": "nixos-hardware",
-        "rev": "68d680c1b7c0e67a9b2144d6776583ee83664ef4",
+        "rev": "3f017311191fe6d501ca2496a835d012f656ee9c",
         "type": "github"
       },
       "original": {
