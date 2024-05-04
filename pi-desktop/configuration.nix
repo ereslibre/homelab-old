@@ -15,7 +15,14 @@
   boot = {
     loader = {
       grub.enable = false;
-      generic-extlinux-compatible.enable = true;
+      generic-extlinux-compatible.enable = false;
+      raspberryPi = {
+        enable = true;
+        firmwareConfig = ''
+          disable_overscan = 1
+        '';
+        version = 4;
+      };
     };
     kernelParams = ["nohibernate"];
   };
