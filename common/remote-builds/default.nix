@@ -1,5 +1,5 @@
 {config, ...}: {
-  sops.secrets.nixos-builder-key = {
+  sops.secrets.hulk-builder-key = {
     mode = "0400";
     owner = config.users.users.ereslibre.name;
     group = config.users.users.ereslibre.group;
