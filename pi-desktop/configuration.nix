@@ -10,7 +10,6 @@
     ../common/users
   ];
 
-
   sops.defaultSopsFile = ./secrets.yaml;
 
   boot = {
