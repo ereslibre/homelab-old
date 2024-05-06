@@ -11,7 +11,7 @@
   nix = {
     buildMachines = [
       {
-        sshUser = "ereslibre";
+        sshUser = "builder";
         sshKey = config.sops.secrets.hulk-builder-key.path;
         hostName = "hulk";
         systems = ["x86_64-linux" "aarch64-linux"];
