@@ -1,7 +1,7 @@
 defaultHost := "$(hostname)"
 
 switch host=defaultHost:
-  sudo nixos-rebuild --flake .#{{host}} switch
+  @./.switch.sh {{host}}
 
 build host=defaultHost:
   nix build .#nixosConfigurations.{{host}}.config.system.build.toplevel

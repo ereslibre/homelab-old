@@ -9,15 +9,15 @@
       "locked": {
         "lastModified": 1715058535,
         "narHash": "sha256-kHgyDIf22ZaVZf2Ip4oId9l/zYjRcyf7FZkCzl1f+oQ=",
-        "owner": "ereslibre",
-        "repo": "dotfiles",
+        "ref": "refs/heads/main",
         "rev": "352803d746998b64d61a450405285cce1fea783d",
-        "type": "github"
+        "revCount": 2601,
+        "type": "git",
+        "url": "file:///Users/ereslibre/projects/dotfiles"
       },
       "original": {
-        "owner": "ereslibre",
-        "repo": "dotfiles",
-        "type": "github"
+        "type": "git",
+        "url": "file:///Users/ereslibre/projects/dotfiles"
       }
     },
     "flake-utils": {
@@ -81,7 +81,8 @@
       "inputs": {
         "flake-utils": "flake-utils_2",
         "nixpkgs": [
-          "dotfiles"
+          "dotfiles",
+          "nixpkgs"
         ],
         "spectrum": "spectrum"
       },
@@ -96,6 +97,27 @@
       "original": {
         "owner": "astro",
         "repo": "microvm.nix",
+        "type": "github"
+      }
+    },
+    "nix-darwin": {
+      "inputs": {
+        "nixpkgs": [
+          "dotfiles",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1713946171,
+        "narHash": "sha256-lc75rgRQLdp4Dzogv5cfqOg6qYc5Rp83oedF2t0kDp8=",
+        "owner": "LnL7",
+        "repo": "nix-darwin",
+        "rev": "230a197063de9287128e2c68a7a4b0cd7d0b50a7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "LnL7",
+        "repo": "nix-darwin",
         "type": "github"
       }
     },
@@ -150,6 +172,7 @@
       "inputs": {
         "dotfiles": "dotfiles",
         "microvm": "microvm",
+        "nix-darwin": "nix-darwin",
         "nixos-hardware": "nixos-hardware",
         "sops-nix": "sops-nix"
       }
@@ -157,7 +180,8 @@
     "sops-nix": {
       "inputs": {
         "nixpkgs": [
-          "dotfiles"
+          "dotfiles",
+          "nixpkgs"
         ],
         "nixpkgs-stable": "nixpkgs-stable"
       },
