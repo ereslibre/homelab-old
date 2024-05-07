@@ -9,15 +9,15 @@
       "locked": {
         "lastModified": 1715058535,
         "narHash": "sha256-kHgyDIf22ZaVZf2Ip4oId9l/zYjRcyf7FZkCzl1f+oQ=",
-        "ref": "refs/heads/main",
+        "owner": "ereslibre",
+        "repo": "dotfiles",
         "rev": "352803d746998b64d61a450405285cce1fea783d",
-        "revCount": 2601,
-        "type": "git",
-        "url": "file:///Users/ereslibre/projects/dotfiles"
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "file:///Users/ereslibre/projects/dotfiles"
+        "owner": "ereslibre",
+        "repo": "dotfiles",
+        "type": "github"
       }
     },
     "flake-utils": {
