@@ -10,6 +10,7 @@
     ../common/programs
     ../common/remote-builds
     ../common/services
+    ../common/synapse-server
     ../common/tailscale
     ../common/users
     ../common/vendor/intel
