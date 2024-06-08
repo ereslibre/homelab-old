@@ -7,7 +7,7 @@
   users.users.ereslibre = {
     createHome = true;
     home = "/Users/ereslibre";
-    shell = "/run/current-system/sw/bin/zsh";
+    shell = pkgs.zsh;
   };
   nix.gc.automatic = true;
   services = {
@@ -15,6 +15,8 @@
     skhd = {
       enable = true;
       skhdConfig = ''
+        cmd - return : open -n -a "alacritty"
+
         # ################################################################ #
         # THE FOLLOWING IS AN EXPLANATION OF THE GRAMMAR THAT SKHD PARSES. #
         # FOR SIMPLE EXAMPLE MAPPINGS LOOK FURTHER DOWN THIS FILE..        #
