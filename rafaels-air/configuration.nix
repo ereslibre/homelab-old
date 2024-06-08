@@ -3,5 +3,10 @@
     createHome = true;
     home = "/Users/ereslibre";
   };
-  services.nix-daemon.enable = true;
+  nix.gc.automatic = true;
+  services = {
+    nix-daemon.enable = true;
+    tailscale.enable = true;
+    yabai.enable = true;
+  };
 }
