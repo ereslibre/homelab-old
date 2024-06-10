@@ -11,6 +11,7 @@
   };
   nix.gc.automatic = true;
   services = {
+    karabiner-elements.enable = true;
     nix-daemon.enable = true;
     skhd = {
       enable = true;
@@ -19,8 +20,8 @@
           XDG_RUNTIME_DIR="$HOME/.emacs.d" ${pkgs.emacs}/bin/emacsclient --create-frame --no-wait
         '';
       in ''
-        cmd - e : open -n -a "${emacsClient}"
-        cmd - return : open -n -a "alacritty"
+        meh - e : open -n -a "${emacsClient}"
+        meh - return : open -n -a "alacritty"
 
         # ################################################################ #
         # THE FOLLOWING IS AN EXPLANATION OF THE GRAMMAR THAT SKHD PARSES. #
