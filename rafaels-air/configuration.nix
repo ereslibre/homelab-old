@@ -15,6 +15,7 @@
     skhd = {
       enable = true;
       skhdConfig = ''
+        cmd - e : open -n -a "emacs"
         cmd - return : open -n -a "alacritty"
 
         # ################################################################ #
@@ -168,15 +169,25 @@
     yabai = {
       enable = true;
       config = {
-        focus_follows_mouse = "autoraise";
+        layout = "bsp";
+        display_arrangement_order = "default";
+        focus_follows_mouse = "off";
         mouse_follows_focus = "off";
-        window_placement = "second_child";
+        mouse_modifier = "fn";
+        mouse_action1 = "move";
+        mouse_action2 = "resize";
+        mouse_drop_action = "swap";
+        window_gap = 10;
         window_opacity = "off";
-        top_padding = 36;
+        window_origin_display = "default";
+        window_placement = "second_child";
+        window_shadow = "on";
+        window_zoom_persist = "on";
+        top_padding = 10;
         bottom_padding = 10;
         left_padding = 10;
         right_padding = 10;
-        window_gap = 10;
+        split_type = "auto";
       };
     };
   };
