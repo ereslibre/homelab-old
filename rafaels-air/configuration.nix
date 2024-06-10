@@ -15,7 +15,7 @@
     skhd = {
       enable = true;
       skhdConfig = ''
-        cmd - e : open -n -a "emacs"
+        cmd - e : open -n -a "${pkgs.emacs}/bin/emacsclient --create-frame --no-wait"
         cmd - return : open -n -a "alacritty"
 
         # ################################################################ #
