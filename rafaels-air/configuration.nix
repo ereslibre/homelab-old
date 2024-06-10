@@ -14,8 +14,12 @@
     nix-daemon.enable = true;
     skhd = {
       enable = true;
-      skhdConfig = ''
-        cmd - e : open -n -a "${pkgs.emacs}/bin/emacsclient --create-frame --no-wait"
+      skhdConfig = let
+        emacsClient = pkgs.writeShellScript "emacsclient" ''
+          XDG_RUNTIME_DIR="$HOME/.emacs.d" ${pkgs.emacs}/bin/emacsclient --create-frame --no-wait
+        '';
+      in ''
+        cmd - e : open -n -a "${emacsClient}"
         cmd - return : open -n -a "alacritty"
 
         # ################################################################ #
