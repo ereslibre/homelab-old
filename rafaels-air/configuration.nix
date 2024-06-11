@@ -17,7 +17,7 @@
       enable = true;
       skhdConfig = let
         emacsClient = pkgs.writeShellScript "emacsclient" ''
-          XDG_RUNTIME_DIR="$HOME/.emacs.d" ${pkgs.emacs}/bin/emacsclient --create-frame --no-wait -e '(progn (select-frame-set-input-focus (selected-frame)) (toggle-frame-maximized))'
+          exec env XDG_RUNTIME_DIR="$HOME/.emacs.d" ${pkgs.emacs}/bin/emacsclient --create-frame --no-wait -e '(progn (select-frame-set-input-focus (selected-frame)) (toggle-frame-maximized))'
         '';
       in ''
         meh - e : open -n -a "${emacsClient}"
