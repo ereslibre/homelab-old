@@ -22,6 +22,15 @@
       in ''
         meh - e : open -n -a "${emacsClient}"
         meh - return : open -n -a "alacritty"
+        meh - b : ${pkgs.yabai}/bin/yabai -m window --focus west
+        meh - f : ${pkgs.yabai}/bin/yabai -m window --focus east
+        meh + cmd - b : ${pkgs.yabai}/bin/yabai -m window --warp west
+        meh + cmd - f : ${pkgs.yabai}/bin/yabai -m window --warp east
+        meh - p : ${pkgs.yabai}/bin/yabai -m window --focus prev
+        meh - n : ${pkgs.yabai}/bin/yabai -m window --focus next
+        meh + cmd - p : ${pkgs.yabai}/bin/yabai -m window --warp prev
+        meh + cmd - n : ${pkgs.yabai}/bin/yabai -m window --warp next
+        meh - 0x18 : ${pkgs.yabai}/bin/yabai -m space --balance
 
         # ################################################################ #
         # THE FOLLOWING IS AN EXPLANATION OF THE GRAMMAR THAT SKHD PARSES. #
