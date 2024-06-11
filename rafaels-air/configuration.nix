@@ -170,7 +170,10 @@
         # alt - p : yabai -m window --toggle sticky --toggle pip
       '';
     };
-    tailscale.enable = true;
+    tailscale = {
+      enable = true;
+      overrideLocalDns = true;
+    };
     yabai = {
       enable = true;
       config = {
