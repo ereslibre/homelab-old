@@ -36,8 +36,8 @@
         meh - f : ${pkgs.yabai}/bin/yabai -m window --focus east
         meh + cmd - b : ${pkgs.yabai}/bin/yabai -m window --warp west
         meh + cmd - f : ${pkgs.yabai}/bin/yabai -m window --warp east
-        meh - p : ${pkgs.yabai}/bin/yabai -m window --focus prev
-        meh - n : ${pkgs.yabai}/bin/yabai -m window --focus next
+        meh - p : ${pkgs.yabai}/bin/yabai -m window --focus prev || ${pkgs.yabai}/bin/yabai -m display --focus west
+        meh - n : ${pkgs.yabai}/bin/yabai -m window --focus next || ${pkgs.yabai}/bin/yabai -m display --focus east
         meh + cmd - p : ${pkgs.yabai}/bin/yabai -m window --warp prev
         meh + cmd - n : ${pkgs.yabai}/bin/yabai -m window --warp next
         meh - 0x18 : ${pkgs.yabai}/bin/yabai -m space --balance
