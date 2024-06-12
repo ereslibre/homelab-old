@@ -33,6 +33,8 @@
         meh - 0x18 : ${pkgs.yabai}/bin/yabai -m space --balance
         meh - right : ${pkgs.yabai}/bin/yabai -m window --space next --focus
         meh - left : ${pkgs.yabai}/bin/yabai -m window --space prev --focus
+        meh - j : ${pkgs.yabai}/bin/yabai -m space --focus prev
+        meh - k : ${pkgs.yabai}/bin/yabai -m space --focus next
 
         # ################################################################ #
         # THE FOLLOWING IS AN EXPLANATION OF THE GRAMMAR THAT SKHD PARSES. #
