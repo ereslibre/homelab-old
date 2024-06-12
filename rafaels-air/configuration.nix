@@ -26,25 +26,26 @@
     skhd = {
       enable = true;
       skhdConfig = let
+        yabai = "${pkgs.yabai}/bin/yabai";
         emacsClient = pkgs.writeShellScript "emacsclient" ''
           exec env XDG_RUNTIME_DIR="$HOME/.emacs.d" ${pkgs.emacs}/bin/emacsclient --create-frame --no-wait -e '(progn (select-frame-set-input-focus (selected-frame)) (toggle-frame-maximized))'
         '';
       in ''
         meh - e : open -n -a "${emacsClient}"
         meh - return : open -n -a "alacritty"
-        meh - b : ${pkgs.yabai}/bin/yabai -m window --focus west
-        meh - f : ${pkgs.yabai}/bin/yabai -m window --focus east
-        meh + cmd - b : ${pkgs.yabai}/bin/yabai -m window --warp west
-        meh + cmd - f : ${pkgs.yabai}/bin/yabai -m window --warp east
-        meh - p : ${pkgs.yabai}/bin/yabai -m window --focus prev || ${pkgs.yabai}/bin/yabai -m display --focus west
-        meh - n : ${pkgs.yabai}/bin/yabai -m window --focus next || ${pkgs.yabai}/bin/yabai -m display --focus east
-        meh + cmd - p : ${pkgs.yabai}/bin/yabai -m window --warp prev
-        meh + cmd - n : ${pkgs.yabai}/bin/yabai -m window --warp next
-        meh - 0x18 : ${pkgs.yabai}/bin/yabai -m space --balance
-        meh - right : ${pkgs.yabai}/bin/yabai -m window --space next --focus
-        meh - left : ${pkgs.yabai}/bin/yabai -m window --space prev --focus
-        meh - j : ${pkgs.yabai}/bin/yabai -m space --focus prev
-        meh - k : ${pkgs.yabai}/bin/yabai -m space --focus next
+        meh - b : ${yabai} -m window --focus west
+        meh - f : ${yabai} -m window --focus east
+        meh + cmd - b : ${yabai} -m window --warp west || ${yabai} -m window --display west; ${yabai} -m display --focus west
+        meh + cmd - f : ${yabai} -m window --warp east || ${yabai} -m window --display east; ${yabai} -m display --focus east
+        meh - p : ${yabai} -m window --focus prev || ${yabai} -m display --focus west
+        meh - n : ${yabai} -m window --focus next || ${yabai} -m display --focus east
+        meh + cmd - p : ${yabai} -m window --warp prev || ${yabai} -m window --display west; ${yabai} -m display --focus west
+        meh + cmd - n : ${yabai} -m window --warp next || ${yabai} -m window --display east; ${yabai} -m display --focus east
+        meh - 0x18 : ${yabai} -m space --balance
+        meh - right : ${yabai} -m window --space next --focus
+        meh - left : ${yabai} -m window --space prev --focus
+        meh - j : ${yabai} -m space --focus prev
+        meh - k : ${yabai} -m space --focus next
 
         # ################################################################ #
         # THE FOLLOWING IS AN EXPLANATION OF THE GRAMMAR THAT SKHD PARSES. #
