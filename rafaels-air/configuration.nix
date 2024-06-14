@@ -31,10 +31,13 @@
           exec env XDG_RUNTIME_DIR="$HOME/.emacs.d" ${pkgs.emacs}/bin/emacsclient --create-frame --no-wait -e '(progn (select-frame-set-input-focus (selected-frame)) (toggle-frame-maximized))'
         '';
       in ''
-        meh - e : open -n -a "${emacsClient}"
+        meh - a : open -a "arc"
+        meh - e : open -a "${emacsClient}"
+        meh - n : open -a -n -a "alacritty"
         meh - return : open -n -a "alacritty"
         meh - b : ${yabai} -m window --focus west
         meh - f : ${yabai} -m window --focus east
+        meh - w : ${yabai} -m window --close
         meh - 1 : ${yabai} -m window --toggle zoom-fullscreen
         meh + cmd - f : ${yabai} -m window --toggle native-fullscreen
         meh + cmd - b : ${yabai} -m window --warp west || ${yabai} -m window --display west; ${yabai} -m display --focus west
