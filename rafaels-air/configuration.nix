@@ -37,8 +37,8 @@
         meh - b : ${yabai} -m window --focus west
         meh - f : ${yabai} -m window --focus east
         meh - w : ${yabai} -m window --close
+        meh - 0 : ${yabai} -m window --toggle native-fullscreen
         meh - 1 : ${yabai} -m window --toggle zoom-fullscreen
-        meh + cmd - f : ${yabai} -m window --toggle native-fullscreen
         meh + cmd - b : ${yabai} -m window --warp west || ${yabai} -m window --display west; ${yabai} -m display --focus west
         meh + cmd - f : ${yabai} -m window --warp east || ${yabai} -m window --display east; ${yabai} -m display --focus east
         meh - p : ${yabai} -m window --focus prev || ${yabai} -m display --focus west
