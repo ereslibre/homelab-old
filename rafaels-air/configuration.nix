@@ -33,7 +33,6 @@
       in ''
         meh - a : open -a "arc"
         meh - e : open -a "${emacsClient}"
-        meh - n : open -a -n -a "alacritty"
         meh - return : open -n -a "alacritty"
         meh - b : ${yabai} -m window --focus west
         meh - f : ${yabai} -m window --focus east
