@@ -34,17 +34,17 @@
         meh - a : open -a "arc"
         meh - e : open -a "${emacsClient}"
         meh - return : open -n -a "alacritty"
-        meh - b : ${yabai} -m window --focus west
-        meh - f : ${yabai} -m window --focus east
+        meh - b : ${yabai} -m window --focus west || ${yabai} -m display --focus west
+        meh - f : ${yabai} -m window --focus east || ${yabai} -m display --focus east
         meh - w : ${yabai} -m window --close
         meh - 0 : ${yabai} -m window --toggle native-fullscreen
         meh - 1 : ${yabai} -m window --toggle zoom-fullscreen
-        meh + cmd - b : ${yabai} -m window --warp west || ${yabai} -m window --display west; ${yabai} -m display --focus west
-        meh + cmd - f : ${yabai} -m window --warp east || ${yabai} -m window --display east; ${yabai} -m display --focus east
+        meh + cmd - b : ${yabai} -m window --move west || ${yabai} -m window --display west; ${yabai} -m display --focus west
+        meh + cmd - f : ${yabai} -m window --move east || ${yabai} -m window --display east; ${yabai} -m display --focus east
         meh - p : ${yabai} -m window --focus prev || ${yabai} -m display --focus west
         meh - n : ${yabai} -m window --focus next || ${yabai} -m display --focus east
-        meh + cmd - p : ${yabai} -m window --warp prev || ${yabai} -m window --display west; ${yabai} -m display --focus west
-        meh + cmd - n : ${yabai} -m window --warp next || ${yabai} -m window --display east; ${yabai} -m display --focus east
+        meh + cmd - p : ${yabai} -m window --move west || ${yabai} -m window --display west; ${yabai} -m display --focus west
+        meh + cmd - n : ${yabai} -m window --move east || ${yabai} -m window --display east; ${yabai} -m display --focus east
         meh - 0x18 : ${yabai} -m space --balance
         meh - right : ${yabai} -m window --space next --focus
         meh - left : ${yabai} -m window --space prev --focus
