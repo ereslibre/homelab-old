@@ -4,6 +4,7 @@
     systemPackages = with pkgs; [tailscale zsh];
     systemPath = ["/run/current-system/sw/bin"];
   };
+  fonts.packages = with pkgs; [ fira-code ];
   users.users.ereslibre = {
     createHome = true;
     home = "/Users/ereslibre";
