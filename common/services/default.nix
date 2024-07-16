@@ -1,4 +1,4 @@
-{
+{lib, ...}: {
   services = {
     fwupd.enable = true;
     openssh = {
@@ -6,7 +6,7 @@
       settings = {
         PasswordAuthentication = false;
         KbdInteractiveAuthentication = false;
-        PermitRootLogin = "no";
+        PermitRootLogin = lib.mkForce "no";
       };
       extraConfig = ''
         StreamLocalBindUnlink yes

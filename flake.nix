@@ -73,6 +73,16 @@
         };
       };
       nixosConfigurations = mapMachineConfigurations {
+        "devbox" = {
+          builder = nixpkgs.lib.nixosSystem;
+          system = "aarch64-linux";
+          user = "ereslibre";
+          modules = [
+            home-manager.nixosModules.home-manager
+            ./devbox/configuration.nix
+            "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-base.nix"
+          ];
+        };
         "hulk" = {
           builder = nixpkgs.lib.nixosSystem;
           system = "x86_64-linux";
