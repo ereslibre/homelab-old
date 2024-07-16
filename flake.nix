@@ -64,7 +64,7 @@
       darwinConfigurations = mapMachineConfigurations {
         "Rafaels-Air" = {
           builder = nix-darwin.lib.darwinSystem;
-          system = "x86_64-darwin";
+          system = "aarch64-darwin";
           user = "ereslibre";
           modules = [
             home-manager.darwinModules.home-manager
