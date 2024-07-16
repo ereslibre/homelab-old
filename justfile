@@ -1,4 +1,4 @@
-defaultHost := "$(hostname)"
+defaultHost := "$(hostname -s)"
 
 switch host=defaultHost:
   @./.switch.sh {{host}}
