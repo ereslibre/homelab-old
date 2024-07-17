@@ -9,34 +9,49 @@
     ../common/users
   ];
 
+  # Temporary due to spice-autorandr
+  nixpkgs.config.allowUnsupportedSystem = true;
+
   # Faster ISO creation
   isoImage.squashfsCompression = "gzip -Xcompression-level 1";
 
   environment.variables = {
-    TERMINAL = "alacritty";
+    TERMINAL = "terminator";
   };
 
   fonts = {
     fontconfig.defaultFonts = {
       serif = [
-        "Fira Code"
+        "DejaVu Sans"
       ];
       sansSerif = [
-        "Fira Code"
+        "DejaVu Sans"
       ];
       monospace = [
         "Fira Code"
       ];
     };
     packages = with pkgs; [
+      dejavu_fonts
       fira-code
     ];
   };
 
   home-manager.users.ereslibre = {
-    home.file.".ssh/id_rsa" = {
-      source = /Users/ereslibre/.ssh/id_rsa;
-      recursive = true;
+    home = {
+      file = {
+        ".ssh/id_rsa" = {
+          source = /Users/ereslibre/.ssh/id_rsa;
+          recursive = true;
+        };
+      };
+    };
+    programs.terminator = {
+      enable = true;
+      config = {
+        use_system_font = false;
+        font = "Fira Code 8";
+      };
     };
   };
 
@@ -55,12 +70,32 @@
         user = "ereslibre";
       };
     };
+    libinput = {
+      touchpad.naturalScrolling = true;
+      mouse.naturalScrolling = true;
+    };
+    spice-autorandr.enable = true;
     spice-vdagentd.enable = true;
     xserver = {
       enable = true;
+      dpi = 300;
       windowManager.i3 = {
         enable = true;
-        configFile = pkgs.writeText "i3-config" ''
+        configFile = let
+          xresources = pkgs.writeText ".Xresources" ''
+            Xft.dpi: 300
+
+            Xcursor.size: 64
+
+            ! These might also be useful depending on your monitor and personal preference:
+            Xft.autohint: 0
+            Xft.lcdfilter: lcddefault
+            Xft.hintstyle: hintfull
+            Xft.hinting: 1
+            Xft.antialias: 1
+            Xft.rgba: rgb
+          '';
+        in (pkgs.writeText "i3-config" ''
           # i3 config file (v4)
           #
           # Please see https://i3wm.org/docs/userguide.html for a complete reference!
@@ -268,7 +303,13 @@
           bar {
                   status_command i3status
           }
-        '';
+
+          exec --no-startup-id xrandr --output Virtual-1 --primary --dpi 300 --mode 3840x2160
+          exec --no-startup-id xrdb -merge ${xresources}/.Xresources
+
+          # Scroll speed
+          exec --no-startup-id xset 26/10 4
+        '');
       };
       displayManager.lightdm.enable = true;
     };
