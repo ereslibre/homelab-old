@@ -15,6 +15,9 @@
     ../common/vendor/amd
   ];
 
+  # Cross-compiling support
+  boot.binfmt.emulatedSystems = ["aarch64-linux"];
+
   networking.hostName = "hulk";
 
   # This value determines the NixOS release from which the default
