@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ../common/nixos
   ];
@@ -31,7 +35,16 @@
 
   nix = {
     gc.automatic = true;
-    linux-builder.enable = true;
+    linux-builder = {
+      enable = true;
+      ephemeral = true;
+      config = {
+        virtualisation = {
+          diskSize = lib.mkForce (1000 * 1024);
+        };
+      };
+    };
+    settings.trusted-users = ["@admin"];
   };
 
   services = {

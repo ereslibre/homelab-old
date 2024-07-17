@@ -7,7 +7,7 @@ build host=defaultHost:
   nix build .#nixosConfigurations.{{host}}.config.system.build.toplevel
 
 build-iso host=defaultHost:
-  nix build .#nixosConfigurations.{{host}}.config.system.build.isoImage
+  nix build --impure .#nixosConfigurations.{{host}}.config.system.build.isoImage
 
 fmt:
   find . -name "*.nix" | xargs nix develop --command alejandra
