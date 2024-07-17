@@ -17,6 +17,19 @@
     wireless.enable = false;
   };
 
+  services.xserver = {
+    enable = true;
+    desktopManager.gnome.enable = true;
+    displayManager = {
+      gdm.enable = true;
+      defaultSession = "gnome";
+      autoLogin = {
+        enable = true;
+        user = "ereslibre";
+      };
+    };
+  };
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
