@@ -7,17 +7,17 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1721192809,
-        "narHash": "sha256-IDxtL88JEnyoEn3s0Q836DeTTkUDAlvyk8Lv9H/hzog=",
-        "owner": "ereslibre",
-        "repo": "dotfiles",
-        "rev": "5c3e18d5fa2d77925c980b4225dece132c951cdb",
-        "type": "github"
+        "lastModified": 1721208971,
+        "narHash": "sha256-kN5p3SPdBO8JEhicYxmB11n3W+LuRyUQSIf01HLAMSk=",
+        "ref": "refs/heads/main",
+        "rev": "f0f214bcebed34fd51f9249bfdc92eda663b2dcc",
+        "revCount": 2728,
+        "type": "git",
+        "url": "file:///Users/ereslibre/projects/dotfiles"
       },
       "original": {
-        "owner": "ereslibre",
-        "repo": "dotfiles",
-        "type": "github"
+        "type": "git",
+        "url": "file:///Users/ereslibre/projects/dotfiles"
       }
     },
     "flake-utils": {

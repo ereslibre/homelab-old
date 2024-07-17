@@ -2,7 +2,7 @@
   description = "Home lab";
 
   inputs = {
-    dotfiles.url = "github:ereslibre/dotfiles";
+    dotfiles.url = "git+file:///Users/ereslibre/projects/dotfiles";
     microvm = {
       url = "github:astro/microvm.nix";
       inputs.nixpkgs.follows = "dotfiles/nixpkgs";
