@@ -9,13 +9,26 @@
     ../common/users
   ];
 
-  networking.hostName = "devbox";
+  # Faster ISO creation
+  isoImage.squashfsCompression = "gzip -Xcompression-level 1";
+
+  networking = {
+    hostName = "devbox";
+    wireless.enable = false;
+  };
 
   programs.zsh.enable = true;
 
   services.xserver = {
     enable = true;
-    displayManager.gdm.enable = true;
+    displayManager = {
+      gdm.enable = true;
+      defaultSession = "gnome";
+      autoLogin = {
+        enable = true;
+        user = "ereslibre";
+      };
+    };
     desktopManager.gnome.enable = true;
   };
 
