@@ -21,8 +21,6 @@
 
   environment.variables = {
     TERMINAL = "terminator";
-    GDK_DPI_SCALE = "0.75";
-    GDK_SCALE = "1";
   };
 
   fonts = {
@@ -45,13 +43,7 @@
     ];
   };
 
-  home-manager.users.ereslibre = let
-    emacs-graphical-wrapper = let
-      emacs = pkgs.writeScriptBin "emacs-x" ''
-        ${pkgs.emacs}/bin/emacs --no-wait --xrm "Xft.dpi: 150"
-      '';
-    in "${emacs}/bin/emacs-x";
-  in {
+  home-manager.users.ereslibre = {
     home = {
       file = {
         ".ssh/id_rsa".source = /Users/ereslibre/.ssh/id_rsa;
@@ -61,14 +53,16 @@
         package = pkgs.vanilla-dmz;
         x11.enable = true;
         gtk.enable = true;
-        size = 64;
-      };
-      shellAliases = {
-        emacs-x = emacs-graphical-wrapper;
+        size = 16;
       };
     };
     programs = {
       alacritty.settings.font.size = lib.mkForce 7;
+      emacs.extraConfig = ''
+        (set-frame-font "Iosevka-10:Regular")
+        (add-to-list 'default-frame-alist '(font . "Iosevka-10:Regular"))
+        (set-face-attribute 'default t :font "Iosevka-10:Regular")
+      '';
       firefox.enable = true;
       terminator = {
         enable = true;
@@ -104,7 +98,6 @@
           };
         };
       };
-      zsh.shellAliases.emacs = lib.mkForce emacs-graphical-wrapper;
     };
     gtk.enable = true;
     xsession.enable = true;
@@ -131,8 +124,6 @@
     spice-vdagentd.enable = true;
     xserver = {
       enable = true;
-      dpi = 300;
-      upscaleDefaultCursor = true;
       windowManager.i3 = {
         enable = true;
         configFile = pkgs.writeText "i3-config" ''
@@ -344,7 +335,7 @@
                   status_command i3status
           }
 
-          exec --no-startup-id xrandr --output Virtual-1 --primary --dpi 300 --mode 3840x2160
+          exec --no-startup-id xrandr --output Virtual-1 --primary --auto
 
           # Scroll speed
           exec --no-startup-id xset 26/10 4
