@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ../common/aliases
     ../common/nixos
@@ -18,6 +22,7 @@
   environment.variables = {
     TERMINAL = "terminator";
     GDK_DPI_SCALE = "0.75";
+    GDK_SCALE = "1";
   };
 
   fonts = {
@@ -35,17 +40,21 @@
     packages = with pkgs; [
       dejavu_fonts
       fira-code
+      iosevka
       ubuntu_font_family
     ];
   };
 
-  home-manager.users.ereslibre = {
+  home-manager.users.ereslibre = let
+    emacs-graphical-wrapper = let
+      emacs = pkgs.writeScriptBin "emacs-x" ''
+        ${pkgs.emacs}/bin/emacs --no-wait --xrm "Xft.dpi: 150"
+      '';
+    in "${emacs}/bin/emacs-x";
+  in {
     home = {
       file = {
-        ".ssh/id_rsa" = {
-          source = /Users/ereslibre/.ssh/id_rsa;
-          recursive = true;
-        };
+        ".ssh/id_rsa".source = /Users/ereslibre/.ssh/id_rsa;
       };
       pointerCursor = {
         name = "Vanilla-DMZ";
@@ -54,8 +63,12 @@
         gtk.enable = true;
         size = 64;
       };
+      shellAliases = {
+        emacs-x = emacs-graphical-wrapper;
+      };
     };
     programs = {
+      alacritty.settings.font.size = lib.mkForce 7;
       firefox.enable = true;
       terminator = {
         enable = true;
@@ -91,6 +104,7 @@
           };
         };
       };
+      zsh.shellAliases.emacs = lib.mkForce emacs-graphical-wrapper;
     };
     gtk.enable = true;
     xsession.enable = true;
@@ -334,6 +348,8 @@
 
           # Scroll speed
           exec --no-startup-id xset 26/10 4
+
+          exec --no-startup-id ${pkgs.feh}/bin/feh --bg-scale ${./wallpapers/nix-wallpaper-dracula.png}
         '';
       };
       displayManager.lightdm.enable = true;
