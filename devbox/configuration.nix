@@ -17,6 +17,7 @@
 
   environment.variables = {
     TERMINAL = "terminator";
+    GDK_DPI_SCALE = "0.75";
   };
 
   fonts = {
@@ -34,6 +35,7 @@
     packages = with pkgs; [
       dejavu_fonts
       fira-code
+      ubuntu_font_family
     ];
   };
 
@@ -45,22 +47,59 @@
           recursive = true;
         };
       };
-    };
-    programs.terminator = {
-      enable = true;
-      config = {
-        use_system_font = false;
-        font = "Fira Code 8";
+      pointerCursor = {
+        name = "Vanilla-DMZ";
+        package = pkgs.vanilla-dmz;
+        x11.enable = true;
+        gtk.enable = true;
+        size = 64;
       };
     };
+    programs = {
+      firefox.enable = true;
+      terminator = {
+        enable = true;
+        config = {
+          global_config = {
+            tab_position = "hidden";
+            # Dracula
+            title_transmit_fg_color = "#282a36";
+            title_transmit_bg_color = "#50fa7b";
+            title_receive_fg_color = "#282a36";
+            title_receive_bg_color = "#ff79c6";
+            title_inactive_fg_color = "#f8f8f2";
+            title_inactive_bg_color = "#44475a";
+            inactive_color_offset = "0.61";
+            suppress_multiple_term_dialog = true;
+            title_hide_sizetext = true;
+            # !Dracula
+          };
+          profiles = {
+            default = {
+              use_system_font = false;
+              font = "Fira Code 9";
+              cursor_blink = false;
+              scrollbar_position = "disabled";
+              show_titlebar = false;
+              # Dracula
+              background_color = "#282a36";
+              background_image = "None";
+              foreground_color = "#f8f8f2";
+              palette = "#262626:#e356a7:#42e66c:#e4f34a:#9b6bdf:#e64747:#75d7ec:#efa554:#7a7a7a:#ff79c6:#50fa7b:#f1fa8c:#bd93f9:#ff5555:#8be9fd:#ffb86c";
+              # !Dracula
+            };
+          };
+        };
+      };
+    };
+    gtk.enable = true;
+    xsession.enable = true;
   };
 
   networking = {
     hostName = "devbox";
     wireless.enable = false;
   };
-
-  programs.firefox.enable = true;
 
   services = {
     displayManager = {
@@ -79,23 +118,10 @@
     xserver = {
       enable = true;
       dpi = 300;
+      upscaleDefaultCursor = true;
       windowManager.i3 = {
         enable = true;
-        configFile = let
-          xresources = pkgs.writeText ".Xresources" ''
-            Xft.dpi: 300
-
-            Xcursor.size: 64
-
-            ! These might also be useful depending on your monitor and personal preference:
-            Xft.autohint: 0
-            Xft.lcdfilter: lcddefault
-            Xft.hintstyle: hintfull
-            Xft.hinting: 1
-            Xft.antialias: 1
-            Xft.rgba: rgb
-          '';
-        in (pkgs.writeText "i3-config" ''
+        configFile = pkgs.writeText "i3-config" ''
           # i3 config file (v4)
           #
           # Please see https://i3wm.org/docs/userguide.html for a complete reference!
@@ -116,7 +142,7 @@
 
           # Font for window titles. Will also be used by the bar unless a different font
           # is used in the bar {} block below.
-          font xft:Fira Code Retina 8
+          font xft:Fira Code Retina 7
 
           # Start XDG autostart .desktop files using dex. See also
           # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -163,7 +189,7 @@
           bindsym $mod+Shift+q kill
 
           # start dmenu (a program launcher)
-          bindsym $mod+d exec --no-startup-id dmenu_run
+          bindsym $mod+d exec --no-startup-id dmenu_run -fn 'FiraCode-7 -h 24'
           # A more modern dmenu replacement is rofi:
           # bindsym $mod+d exec "rofi -modi drun,run -show drun"
           # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -305,11 +331,10 @@
           }
 
           exec --no-startup-id xrandr --output Virtual-1 --primary --dpi 300 --mode 3840x2160
-          exec --no-startup-id xrdb -merge ${xresources}/.Xresources
 
           # Scroll speed
           exec --no-startup-id xset 26/10 4
-        '');
+        '';
       };
       displayManager.lightdm.enable = true;
     };
